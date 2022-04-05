@@ -1,2 +1,2 @@
 # EndlessSchool
-A Top Down Bully like game
+A Top Down Bully-like game
