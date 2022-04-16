@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Player
+
 export (int) var speed = 400
 var screen_size: Vector2
 var velocity: Vector2
