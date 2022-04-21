@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/PlayerSprite.jpg" type="Texture" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://scripts/Object.gd" type="Script" id=4]
 [ext_resource path="res://assets/EnemySprite.png" type="Texture" id=5]
 [ext_resource path="res://scripts/Enemy.gd" type="Script" id=6]
+[ext_resource path="res://assets/itemSprite.jpg" type="Texture" id=7]
+[ext_resource path="res://scripts/Item.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 50, 50 )
@@ -15,6 +17,9 @@ extents = Vector2( 50, 50 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 50, 50 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 25, 25 )
 
 [node name="School" type="Node2D"]
 
@@ -28,6 +33,8 @@ texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Player"]
 
 [node name="Object" type="StaticBody2D" parent="."]
 input_pickable = true
@@ -49,3 +56,16 @@ texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 shape = SubResource( 3 )
+
+[node name="Item" type="Area2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="Item"]
+scale = Vector2( 50, 50 )
+texture = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item"]
+shape = SubResource( 4 )
+
+[connection signal="body_entered" from="Item" to="Player" method="_on_Item_body_entered"]
+[connection signal="body_entered" from="Item" to="Item" method="_on_Item_body_entered"]
