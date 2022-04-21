@@ -36,15 +36,15 @@ shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="Player"]
 
-[node name="Object" type="StaticBody2D" parent="."]
+[node name="StaticObject" type="StaticBody2D" parent="."]
 input_pickable = true
 script = ExtResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="Object"]
+[node name="Sprite" type="Sprite" parent="StaticObject"]
 scale = Vector2( 100, 100 )
 texture = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Object"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticObject"]
 shape = SubResource( 2 )
 
 [node name="Enemy" type="KinematicBody2D" parent="."]

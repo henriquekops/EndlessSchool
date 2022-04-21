@@ -6,6 +6,7 @@ export (int) var speed = 400
 var screen_size: Vector2
 var velocity: Vector2
 var timer: Timer
+var collision: KinematicCollision2D
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -29,7 +30,11 @@ func _physics_process(delta):
 	position.x = clamp(position.x, 50, screen_size.x-50)
 	position.y = clamp(position.y, 50, screen_size.y-50)
 
-	move_and_collide(velocity)
+	collision = move_and_collide(velocity)
+	
+	if collision != null:
+		print(collision.collider)
+		#visible = false
 
 func _on_Item_body_entered(body):
 	speed = speed * 2

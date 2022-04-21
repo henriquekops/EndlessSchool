@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+class_name StaticObject
+
 var window_size
 
 func _ready():

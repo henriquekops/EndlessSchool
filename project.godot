@@ -14,14 +14,26 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/Enemy.gd"
 }, {
+"base": "Area2D",
+"class": "Item",
+"language": "GDScript",
+"path": "res://scripts/Item.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://scripts/Player.gd"
+}, {
+"base": "StaticBody2D",
+"class": "StaticObject",
+"language": "GDScript",
+"path": "res://scripts/Object.gd"
 } ]
 _global_script_class_icons={
 "Enemy": "",
-"Player": ""
+"Item": "",
+"Player": "",
+"StaticObject": ""
 }
 
 [application]

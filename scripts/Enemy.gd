@@ -28,7 +28,6 @@ func _ready():
 	generate_raycasts()
 
 func _physics_process(delta):
-	pass
 	for ray in get_children().slice(2, -1):
 		if ray.is_colliding() and ray.get_collider() is Player:
 			target = ray.get_collision_point()
