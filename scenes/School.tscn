@@ -70,4 +70,4 @@ shape = SubResource( 3 )
 [node name="RayCast2D" type="RayCast2D" parent="Enemy"]
 
 [connection signal="body_entered" from="Item" to="Item" method="_on_Item_body_entered"]
-[connection signal="body_entered" from="Item" to="Player" method="_on_Item_body_entered"]
+[connection signal="consumed" from="Item" to="Player" method="_on_Item_consumed"]
