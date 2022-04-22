@@ -9,4 +9,5 @@ func _ready():
 	position = Vector2(window_size.x/2, window_size.y/2+100)
 
 func _on_Item_body_entered(body):
-	visible = false
+	if body is Player:
+		call_deferred("free")

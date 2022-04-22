@@ -9,19 +9,40 @@
 [ext_resource path="res://assets/itemSprite.jpg" type="Texture" id=7]
 [ext_resource path="res://scripts/Item.gd" type="Script" id=8]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 50, 50 )
-
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 50, 50 )
-
-[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 50, 50 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 25, 25 )
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 50, 50 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 50, 50 )
+
 [node name="School" type="Node2D"]
+
+[node name="StaticObject" type="StaticBody2D" parent="."]
+input_pickable = true
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="StaticObject"]
+scale = Vector2( 100, 100 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticObject"]
+shape = SubResource( 2 )
+
+[node name="Item" type="Area2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="Item"]
+scale = Vector2( 50, 50 )
+texture = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item"]
+shape = SubResource( 4 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
 script = ExtResource( 2 )
@@ -36,17 +57,6 @@ shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="Player"]
 
-[node name="StaticObject" type="StaticBody2D" parent="."]
-input_pickable = true
-script = ExtResource( 4 )
-
-[node name="Sprite" type="Sprite" parent="StaticObject"]
-scale = Vector2( 100, 100 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticObject"]
-shape = SubResource( 2 )
-
 [node name="Enemy" type="KinematicBody2D" parent="."]
 script = ExtResource( 6 )
 
@@ -57,15 +67,5 @@ texture = ExtResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 shape = SubResource( 3 )
 
-[node name="Item" type="Area2D" parent="."]
-script = ExtResource( 8 )
-
-[node name="Sprite" type="Sprite" parent="Item"]
-scale = Vector2( 50, 50 )
-texture = ExtResource( 7 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Item"]
-shape = SubResource( 4 )
-
-[connection signal="body_entered" from="Item" to="Player" method="_on_Item_body_entered"]
 [connection signal="body_entered" from="Item" to="Item" method="_on_Item_body_entered"]
+[connection signal="body_entered" from="Item" to="Player" method="_on_Item_body_entered"]

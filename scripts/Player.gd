@@ -10,7 +10,7 @@ var collision: KinematicCollision2D
 
 func _ready():
 	screen_size = get_viewport_rect().size
-	position = Vector2($Sprite.scale.x/2, $Sprite.scale.y/2)
+	position = Vector2((screen_size.x/2) - ($Sprite.scale.x*2), screen_size.y/2)
 	timer = $Timer
 	timer.connect("timeout", self, "_on_Timer_timeout")
 
@@ -25,16 +25,16 @@ func _physics_process(delta):
 	if Input.is_action_pressed("Move Left"):
 		velocity.x -= 1
 	
-	#if velocity.length() > 0:
 	velocity = velocity.normalized() * speed * delta
+	
 	position.x = clamp(position.x, 50, screen_size.x-50)
 	position.y = clamp(position.y, 50, screen_size.y-50)
 
 	collision = move_and_collide(velocity)
 	
 	if collision != null:
-		print(collision.collider)
-		#visible = false
+		if collision.collider.name == "Enemy":
+			call_deferred("free")
 
 func _on_Item_body_entered(body):
 	speed = speed * 2
