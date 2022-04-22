@@ -2,8 +2,7 @@ extends StaticBody2D
 
 class_name StaticObject
 
-var window_size
+onready var window_size: Vector2 = get_viewport_rect().size
 
-func _ready() -> void:
-	window_size = get_viewport_rect().size
+func _ready() -> void:	
 	position = Vector2(window_size.x/2, window_size.y/2)

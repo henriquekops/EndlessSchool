@@ -4,15 +4,14 @@ class_name Player
 
 export var speed: int = 400
 
-var screen_size: Vector2
 var velocity: Vector2
-var timer: Timer
 var collision: KinematicCollision2D
 
+onready var screen_size: Vector2 = get_viewport_rect().size
+onready var timer: Timer = $Timer
+
 func _ready() -> void:
-	screen_size = get_viewport_rect().size
 	position = Vector2((screen_size.x/2) - ($Sprite.scale.x*2), screen_size.y/2)
-	timer = $Timer
 	timer.connect("timeout", self, "_on_Timer_timeout")
 
 func _physics_process(delta: float) -> void:
