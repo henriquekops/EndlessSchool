@@ -2,17 +2,16 @@ extends KinematicBody2D
 
 class_name Enemy
 
-export var speed = 50
-export var fov_distance = 400
-export var fov_angle = deg2rad(360.0)
-export var fov_inner_angle = deg2rad(10.0)
+export var speed: int = 50
+export var fov_distance: int = 400
+export var fov_angle: float = deg2rad(360.0)
+export var fov_inner_angle: float = deg2rad(10.0)
 
 var screen_size: Vector2
 var velocity: Vector2
 var target: Vector2
-#var raycasts: Node2D
 
-func generate_raycasts():
+func generate_raycasts() -> void:
 	var ray_count = fov_angle / fov_inner_angle
 	for index in ray_count:
 		var ray = RayCast2D.new()
@@ -21,13 +20,12 @@ func generate_raycasts():
 		ray.enabled = true
 		add_child(ray)
 
-func _ready():
+func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	position = Vector2((screen_size.x/2) + ($Sprite.scale.x*2), screen_size.y/2)
-	#raycasts = $Raycasts
 	generate_raycasts()
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	for ray in get_children().slice(2, -1):
 		if ray.is_colliding() and ray.get_collider() is Player:
 			target = ray.get_collision_point()
