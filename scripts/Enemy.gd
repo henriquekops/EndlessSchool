@@ -3,7 +3,7 @@ extends KinematicBody2D
 class_name Enemy
 
 export var speed: int = 100
-export var fov_distance: int = 400
+export var fov_distance: int = 500
 export var fov_angle: float = deg2rad(360)
 export var fov_inner_angle: float = deg2rad(36)
 
@@ -22,10 +22,11 @@ func _physics_process(delta: float) -> void:
 		raycast.cast_to = ray_coordinate
 		raycast.force_raycast_update()
 		if raycast.is_colliding() and raycast.get_collider() is Player:
+			print(raycast.get_collider().name)
 			target = raycast.get_collision_point()
+			var dir = (target - global_position).normalized()
+			move_and_collide(dir * speed * delta)
 			break
-	var dir = (target - global_position).normalized()
-	move_and_collide(dir * speed * delta)
 
 func raycast_coordinates() -> Array:
 	var raycast_coordinates: Array = []
