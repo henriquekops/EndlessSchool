@@ -7,9 +7,10 @@ export var speed: int = 400
 var velocity: Vector2
 var collision: KinematicCollision2D
 
-onready var screen_size: Vector2 = get_viewport_rect().size
 onready var timer: Timer = $Timer
+onready var sprite: Sprite = $Sprite
 onready var item: Item = get_node("../Item")
+onready var screen_size: Vector2 = get_viewport_rect().size
 
 func _ready() -> void:
 	position = Vector2((screen_size.x/2) - ($Sprite.scale.x*2), screen_size.y/2)
@@ -25,11 +26,14 @@ func _physics_process(delta: float) -> void:
 		if collision.collider.name == "Enemy":
 			call_deferred("free")
 
-func _on_Item_consumed(type: String, effect: String):
-	if type == "passive":
-		if effect == "velocity":
+func _on_Item_consumed(type: int, effect: int):
+	if type == item.Type.PASSIVE:
+		if effect == item.Effect.VELOCITY:
 			speed = speed * 2
 		timer.start(5)
+	elif type == item.Type.ACTIVE:
+		print("bruh")
+		sprite.texture = item.sprite.texture
 
 func _on_Timer_timeout():
 	speed = speed / 2

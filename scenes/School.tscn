@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/PlayerSprite.jpg" type="Texture" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
@@ -6,14 +6,10 @@
 [ext_resource path="res://scripts/Object.gd" type="Script" id=4]
 [ext_resource path="res://assets/EnemySprite.png" type="Texture" id=5]
 [ext_resource path="res://scripts/Enemy.gd" type="Script" id=6]
-[ext_resource path="res://assets/itemSprite.jpg" type="Texture" id=7]
-[ext_resource path="res://scripts/Item.gd" type="Script" id=8]
+[ext_resource path="res://scenes/Item.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 50, 50 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 25, 25 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 50, 50 )
@@ -34,15 +30,12 @@ texture = ExtResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticObject"]
 shape = SubResource( 2 )
 
-[node name="Item" type="Area2D" parent="."]
-script = ExtResource( 8 )
+[node name="Item" parent="." instance=ExtResource( 7 )]
+position = Vector2( 403, 573 )
 
-[node name="Sprite" type="Sprite" parent="Item"]
-scale = Vector2( 50, 50 )
-texture = ExtResource( 7 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Item"]
-shape = SubResource( 4 )
+[node name="Item2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 184, 397 )
+type = 1
 
 [node name="Player" type="KinematicBody2D" parent="."]
 script = ExtResource( 2 )
@@ -68,6 +61,3 @@ texture = ExtResource( 5 )
 shape = SubResource( 3 )
 
 [node name="RayCast2D" type="RayCast2D" parent="Enemy"]
-
-[connection signal="body_entered" from="Item" to="Item" method="_on_Item_body_entered"]
-[connection signal="consumed" from="Item" to="Player" method="_on_Item_consumed"]
