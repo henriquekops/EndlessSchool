@@ -62,25 +62,70 @@ func move() -> Vector2:
 
 func entra_porta(porta: StaticBody2D):
 	level+= 1;
-	if porta.position.x < screen_size.x / 2:
-		position.x = screen_size.x - 20;	
+	var xbefore = 0;
+	var ybefore = 0;
+	if porta.position.x < screen_size.x / 2:	
+		xbefore = -1;
 	else:
-		position.x = 20;
+		xbefore = 1;
 	if porta.position.y < screen_size.y / 2:
-		position.y = screen_size.y - 20;	
+		ybefore = 	-1;
 	else:
-		position.y = 20;
-	var i = random.randi() % 4;
-	if i == 0:
-		porta.position.y = 20;
-		porta.position.x = random.randi_range(20, screen_size.x - 20);
-	elif i == 1:
-		porta.position.x = screen_size.x - 20;
-		porta.position.y = random.randi_range(20, screen_size.y - 20);
-	elif i == 2:
-		porta.position.x = 20;
-		porta.position.y = random.randi_range(20, screen_size.y - 20);
-	else:
-		porta.position.y = screen_size.y - 20;
-		porta.position.x = random.randi_range(20, screen_size.x - 20);
-	pass;
+		ybefore = 1;
+		
+	if xbefore == -1 and ybefore == 1:
+		position.x = screen_size.x - 20;
+		position.y =  screen_size.y / 2;
+		
+		var i = random.randi() % 3;
+		if i == 0:
+			porta.position.x = 20;
+			porta.position.y = screen_size.y / 2;
+		elif i == 2:
+			porta.position.y = screen_size.y -20;
+			porta.position.x = screen_size.x / 2;
+		else:
+			porta.position.y = 20;
+			porta.position.x = screen_size.x / 2;
+	if xbefore == 1 and ybefore == -1:
+		position.y =  screen_size.y - 20;
+		position.x =screen_size.x / 2;
+		var i = random.randi() % 3;
+		if i == 0:
+			porta.position.x = screen_size.x / 2;
+			porta.position.y = 20;
+		elif i == 2:
+			porta.position.y = screen_size.y / 2;
+			porta.position.x = screen_size.x - 20;
+		else:
+			porta.position.y = screen_size.y / 2;
+			porta.position.x = 20;
+		
+	if xbefore == -1 and ybefore ==-1:
+		position.y =  screen_size.y - 20;
+		position.x = screen_size.x / 2;
+		var i = random.randi() % 3;
+		if i == 0:
+			porta.position.x = 20;
+			porta.position.y = screen_size.y / 2;
+		elif i == 2:
+			porta.position.y = screen_size.y / 2;
+			porta.position.x = screen_size.x - 20;
+		else:
+			porta.position.x = screen_size.x / 2;
+			porta.position.y = 20;
+		
+	if xbefore == 1 and ybefore == 1:
+		position.y =  20;
+		position.x = screen_size.x / 2;
+		var i = random.randi() % 3;
+		if i == 0:
+			porta.position.x = screen_size.x / 2;
+			porta.position.y = screen_size.y - 20;
+		elif i == 2:
+			porta.position.y = screen_size.y / 2;
+			porta.position.x = screen_size.x - 20;
+		else:
+			porta.position.y = screen_size.y / 2;
+			porta.position.x = 20;
+		
