@@ -13,22 +13,22 @@ position = Vector2( 1280, 393 )
 target_scene = "res://scenes/levels/Level1.tscn"
 
 [node name="ActiveItem" parent="." instance=ExtResource( 4 )]
-position = Vector2( 190, 676 )
+position = Vector2( 718, 130 )
 
 [node name="ActiveItem2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 182, 402 )
+position = Vector2( 382, 130 )
 
 [node name="ActiveItem3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 182, 498 )
+position = Vector2( 494, 132 )
 
 [node name="ActiveItem4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 186, 590 )
+position = Vector2( 610, 130 )
 
 [node name="PassiveItem" parent="." instance=ExtResource( 5 )]
-position = Vector2( 620, 484 )
+position = Vector2( 150, 408 )
 
 [node name="Enemy" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1150, 114 )
+position = Vector2( 864, 132 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 132, 140 )

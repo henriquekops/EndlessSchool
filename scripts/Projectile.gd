@@ -8,13 +8,7 @@ export var speed = 700
 
 onready var direction: int =  Direction.UP
 
-var delay = 5
-
 func _physics_process(delta):
-	delay -= 1
-	if delay == 0:
-		print("bla")
-		delay = 5
 	match direction:
 		Direction.UP:
 			position -= transform.y * speed * delta
