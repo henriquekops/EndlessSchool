@@ -25,6 +25,10 @@ func _physics_process(delta):
 		Direction.RIGHT:
 			position += transform.x * speed * delta
 
-
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
+
+func _on_Projectile_body_entered(body):
+	if body.is_in_group("enemy"):
+		body.queue_free()
+		queue_free()
