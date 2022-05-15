@@ -16,6 +16,7 @@ var defaultTexture: Texture
 
 onready var timer: Timer = $Timer
 onready var sprite: Sprite = $Sprite
+onready var projectileSource = $ProjectileSource
 onready var screen_size: Vector2 = get_viewport_rect().size
 
 var currentScene = null
@@ -99,5 +100,5 @@ func shoot(direction):
 	sprite.texture = defaultTexture
 	var p = Projectile.instance()
 	owner.add_child(p)
-	p.transform = $ProjectileSource.global_transform
+	p.transform = projectileSource.global_transform
 	p.direction = direction
