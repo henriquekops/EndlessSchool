@@ -4,12 +4,17 @@ class_name Player
 
 export var speed: int = 400
 
+var sceneLimit : Position2D
+var player : KinematicBody2D
+
 var velocity: Vector2
 var collision: KinematicCollision2D
 
 onready var timer: Timer = $Timer
+
 onready var sprite: Sprite = $Sprite
 onready var screen_size: Vector2 = get_viewport_rect().size
+var currentScene = null
 
 #sala atual
 
@@ -22,7 +27,9 @@ var level: int = 1;
 var random = RandomNumberGenerator.new();
 
 func _ready() -> void:
-	
+	currentScene = get_child(0)
+	sceneLimit = currentScene.get_node("SceneLimit") 
+	player = currentScene.get_node("Player")
 	random.randomize();
 	position = Vector2((screen_size.x/2) - ($Sprite.scale.x*2), screen_size.y/2)
 	timer.connect("timeout", self, "_on_Timer_timeout")
@@ -36,6 +43,7 @@ func _physics_process(delta: float) -> void:
 	if collision != null:
 		if collision.collider.name == "Enemy":
 			call_deferred("free")
+			get_tree().change_scene("res://Scenes/GameOver.tscn")
 		elif collision.collider.name.begins_with("Porta"):
 			entra_porta(collision.collider);
 
