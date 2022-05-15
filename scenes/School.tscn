@@ -26,7 +26,7 @@ position = Vector2( 311, 570 )
 type = 1
 
 [node name="Door1" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1229, 393 )
+position = Vector2( 1280, 393 )
 target_scene = "res://scenes/levels/Level1.tscn"
 
 [node name="Player" type="KinematicBody2D" parent="."]
