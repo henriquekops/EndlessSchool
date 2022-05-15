@@ -9,7 +9,6 @@ var collision: KinematicCollision2D
 
 onready var timer: Timer = $Timer
 onready var sprite: Sprite = $Sprite
-onready var item: Item = get_node("../Item")
 onready var screen_size: Vector2 = get_viewport_rect().size
 
 #sala atual
@@ -27,7 +26,7 @@ func _ready() -> void:
 	random.randomize();
 	position = Vector2((screen_size.x/2) - ($Sprite.scale.x*2), screen_size.y/2)
 	timer.connect("timeout", self, "_on_Timer_timeout")
-	item.connect("consumed", self, "_on_Item_consumed")
+	# item.connect("consumed", self, "_on_Item_consumed")
 
 func _physics_process(delta: float) -> void:
 	velocity = move().normalized() * speed * delta
@@ -39,15 +38,6 @@ func _physics_process(delta: float) -> void:
 			call_deferred("free")
 		elif collision.collider.name.begins_with("Porta"):
 			entra_porta(collision.collider);
-
-func _on_Item_consumed(type: int, effect: int):
-	if type == item.Type.PASSIVE:
-		if effect == item.Effect.VELOCITY:
-			speed = speed * 2
-		timer.start(5)
-	elif type == item.Type.ACTIVE:
-		print("bruh")
-		sprite.texture = item.sprite.texture
 
 func _on_Timer_timeout():
 	speed = speed / 2
@@ -133,4 +123,17 @@ func entra_porta(porta: StaticBody2D):
 		else:
 			porta.position.y = screen_size.y / 2;
 			porta.position.x = 20;
-		
+
+func _on_Area2D_area_entered(area):
+	if area.get_groups()[0] == "item":
+		apply_item_effect(area)
+		area.queue_free()
+
+func apply_item_effect(item):
+	if item.type == item.Type.PASSIVE:
+		if item.effect == item.Effect.VELOCITY:
+			speed = speed * 2
+		timer.start(5)
+	elif item.type == item.Type.ACTIVE:
+		print("bruh")
+		sprite.texture = item.sprite.texture
