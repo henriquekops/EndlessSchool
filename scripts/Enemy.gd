@@ -5,7 +5,7 @@ class_name Enemy
 export var speed: int = 150
 export var fov_distance: int = 400
 export var fov_angle: float = deg2rad(360)
-export var fov_inner_angle: float = deg2rad(36)
+export var fov_inner_angle: float = deg2rad(10)
 
 var velocity: Vector2
 var target: Vector2
