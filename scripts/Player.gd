@@ -31,9 +31,7 @@ func _ready() -> void:
 	sceneLimit = currentScene.get_node("SceneLimit") 
 	player = currentScene.get_node("Player")
 	random.randomize();
-	position = Vector2((screen_size.x/2) - ($Sprite.scale.x*2), screen_size.y/2)
 	timer.connect("timeout", self, "_on_Timer_timeout")
-	# item.connect("consumed", self, "_on_Item_consumed")
 
 func _physics_process(delta: float) -> void:
 	velocity = move().normalized() * speed * delta

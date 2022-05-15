@@ -14,9 +14,6 @@ onready var raycast: RayCast2D = $RayCast2D
 onready var screen_size: Vector2 = get_viewport().size
 onready var raycast_coordinates: Array = raycast_coordinates()
 
-func _ready() -> void:
-	position = Vector2((screen_size.x/2) + ($Sprite.scale.x*2), screen_size.y/2)
-
 func _physics_process(delta: float) -> void:
 	for ray_coordinate in raycast_coordinates():
 		raycast.cast_to = ray_coordinate
