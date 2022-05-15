@@ -25,12 +25,12 @@ position = Vector2( 403, 573 )
 position = Vector2( 311, 570 )
 type = 1
 
-[node name="Door" parent="." instance=ExtResource( 3 )]
+[node name="Door1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1229, 393 )
 target_scene = "res://scenes/levels/Level1.tscn"
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 1066, 393 )
+position = Vector2( 683, 494 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Player"]
@@ -50,6 +50,7 @@ shape = SubResource( 4 )
 
 [node name="Enemy" type="KinematicBody2D" parent="."]
 position = Vector2( 413, 170 )
+collision_layer = 4
 script = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Enemy"]

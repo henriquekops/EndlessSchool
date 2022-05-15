@@ -25,6 +25,8 @@ func next_level():
 	
 	if ERR != OK:
 		print("Something failed in the door scene")
+		
+	Global.door_name = name
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

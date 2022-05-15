@@ -42,6 +42,10 @@ config/name="EndlessSchool"
 run/main_scene="res://scenes/School.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://scripts/Global.gd"
+
 [display]
 
 window/size/width=1280
@@ -76,6 +80,7 @@ window/stretch/aspect="keep"
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Door"
+2d_physics/layer_3="Enemy"
 
 [physics]
 
