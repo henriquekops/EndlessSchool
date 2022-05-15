@@ -2,19 +2,24 @@ extends KinematicBody2D
 
 class_name Player
 
+enum Direction {UP, DOWN, LEFT, RIGHT}
+
 export var speed: int = 400
+export var inventory_capacity: int = 3
+export (PackedScene) var Projectile
 
 var sceneLimit : Position2D
 var player : KinematicBody2D
-
 var velocity: Vector2
 var collision: KinematicCollision2D
+var defaultTexture: Texture
 
 onready var timer: Timer = $Timer
-
 onready var sprite: Sprite = $Sprite
 onready var screen_size: Vector2 = get_viewport_rect().size
+
 var currentScene = null
+var inventory_acc = 0
 
 #sala atual
 
@@ -32,6 +37,18 @@ func _ready() -> void:
 	player = currentScene.get_node("Player")
 	random.randomize();
 	timer.connect("timeout", self, "_on_Timer_timeout")
+	defaultTexture = sprite.texture
+
+func _input(event):
+	if inventory_acc > 0:
+		if event.is_action_pressed("Item Up"):
+			shoot(Direction.UP)
+		elif event.is_action_pressed("Item Down"):
+			shoot(Direction.DOWN)
+		elif event.is_action_pressed("Item Left"):
+			shoot(Direction.LEFT)
+		elif event.is_action_pressed("Item Right"):
+			shoot(Direction.RIGHT)
 
 func _physics_process(delta: float) -> void:
 	velocity = move().normalized() * speed * delta
@@ -46,6 +63,7 @@ func _physics_process(delta: float) -> void:
 			entra_porta(collision.collider);
 
 func _on_Timer_timeout():
+	sprite.texture = defaultTexture
 	speed = speed / 2
 	timer.stop()
 
@@ -133,13 +151,24 @@ func entra_porta(porta: StaticBody2D):
 func _on_Area2D_area_entered(area):
 	if area.get_groups()[0] == "item":
 		apply_item_effect(area)
-		area.queue_free()
 
 func apply_item_effect(item):
-	if item.type == item.Type.PASSIVE:
+	if item.TYPE == "passive":
 		if item.effect == item.Effect.VELOCITY:
+			sprite.texture = item.sprite.texture
 			speed = speed * 2
 		timer.start(5)
-	elif item.type == item.Type.ACTIVE:
-		print("bruh")
-		sprite.texture = item.sprite.texture
+		item.queue_free()
+	elif item.TYPE == "active":
+		if inventory_acc < inventory_capacity:
+			sprite.texture = item.sprite.texture
+			inventory_acc += 1
+			item.queue_free()
+
+func shoot(direction):
+	inventory_acc -= 1
+	sprite.texture = defaultTexture
+	var p = Projectile.instance()
+	owner.add_child(p)
+	p.transform = $ProjectileSource.global_transform
+	p.direction = direction
