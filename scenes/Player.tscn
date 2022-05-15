@@ -11,6 +11,7 @@ extents = Vector2( 50, 50 )
 radius = 72.1734
 
 [node name="Player" type="KinematicBody2D"]
+collision_mask = 3
 script = ExtResource( 2 )
 Projectile = ExtResource( 3 )
 

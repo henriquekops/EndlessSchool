@@ -59,8 +59,6 @@ func _physics_process(delta: float) -> void:
 		if collision.collider.name == "Enemy":
 			call_deferred("free")
 			get_tree().change_scene("res://Scenes/GameOver.tscn")
-		elif collision.collider.name.begins_with("Porta"):
-			entra_porta(collision.collider);
 
 func _on_Timer_timeout():
 	sprite.texture = defaultTexture
@@ -78,75 +76,6 @@ func move() -> Vector2:
 	if Input.is_action_pressed("Move Left"):
 		velocity.x -= 1
 	return velocity
-
-func entra_porta(porta: StaticBody2D):
-	level+= 1;
-	var xbefore = 0;
-	var ybefore = 0;
-	if porta.position.x < screen_size.x / 2:	
-		xbefore = -1;
-	else:
-		xbefore = 1;
-	if porta.position.y < screen_size.y / 2:
-		ybefore = 	-1;
-	else:
-		ybefore = 1;
-		
-	if xbefore == -1 and ybefore == 1:
-		position.x = screen_size.x - 20;
-		position.y =  screen_size.y / 2;
-		
-		var i = random.randi() % 3;
-		if i == 0:
-			porta.position.x = 20;
-			porta.position.y = screen_size.y / 2;
-		elif i == 2:
-			porta.position.y = screen_size.y -20;
-			porta.position.x = screen_size.x / 2;
-		else:
-			porta.position.y = 20;
-			porta.position.x = screen_size.x / 2;
-	if xbefore == 1 and ybefore == -1:
-		position.y =  screen_size.y - 20;
-		position.x =screen_size.x / 2;
-		var i = random.randi() % 3;
-		if i == 0:
-			porta.position.x = screen_size.x / 2;
-			porta.position.y = 20;
-		elif i == 2:
-			porta.position.y = screen_size.y / 2;
-			porta.position.x = screen_size.x - 20;
-		else:
-			porta.position.y = screen_size.y / 2;
-			porta.position.x = 20;
-		
-	if xbefore == -1 and ybefore ==-1:
-		position.y =  screen_size.y - 20;
-		position.x = screen_size.x / 2;
-		var i = random.randi() % 3;
-		if i == 0:
-			porta.position.x = 20;
-			porta.position.y = screen_size.y / 2;
-		elif i == 2:
-			porta.position.y = screen_size.y / 2;
-			porta.position.x = screen_size.x - 20;
-		else:
-			porta.position.x = screen_size.x / 2;
-			porta.position.y = 20;
-		
-	if xbefore == 1 and ybefore == 1:
-		position.y =  20;
-		position.x = screen_size.x / 2;
-		var i = random.randi() % 3;
-		if i == 0:
-			porta.position.x = screen_size.x / 2;
-			porta.position.y = screen_size.y - 20;
-		elif i == 2:
-			porta.position.y = screen_size.y / 2;
-			porta.position.x = screen_size.x - 20;
-		else:
-			porta.position.y = screen_size.y / 2;
-			porta.position.x = 20;
 
 func _on_Area2D_area_entered(area):
 	if area.get_groups()[0] == "item":

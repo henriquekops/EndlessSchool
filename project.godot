@@ -54,6 +54,10 @@ config/name="EndlessSchool"
 run/main_scene="res://scenes/School.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://scripts/Global.gd"
+
 [display]
 
 window/size/width=1280
@@ -103,6 +107,12 @@ window/stretch/aspect="keep"
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777233,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Door"
+2d_physics/layer_3="Enemy"
 
 [physics]
 
