@@ -105,9 +105,10 @@ func apply_item_effect(item):
 
 func shoot(direction):
 	inventory_acc -= 1
-	sprite.texture = defaultTexture
 	var p = Projectile.instance()
 	owner.add_child(p)
 	p.transform = projectileSource.global_transform
 	p.direction = direction
 	emit_signal("activeItemReleased")
+	if inventory_acc == 0:
+		sprite.texture = defaultTexture
