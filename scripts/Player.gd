@@ -59,7 +59,7 @@ func _input(event):
 func _physics_process(delta: float) -> void:
 	velocity = move().normalized() * speed * delta
 	position.x = clamp(position.x, 50, screen_size.x-50)
-	position.y = clamp(position.y, 50, screen_size.y-50)
+	position.y = clamp(position.y, 50+90, screen_size.y-50)
 	collision = move_and_collide(velocity)
 	if collision != null:
 		if collision.collider.name == "Enemy":
