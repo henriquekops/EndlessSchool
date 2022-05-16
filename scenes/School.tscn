@@ -1,34 +1,46 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/ActiveItem.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/PassiveItem.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=6]
 
 [node name="School" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ 291.0 ],
+"_edit_vertical_guides_": [ 157.0 ]
+}
 
 [node name="Door1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1280, 393 )
 target_scene = "res://scenes/levels/Level1.tscn"
 
 [node name="ActiveItem" parent="." instance=ExtResource( 4 )]
-position = Vector2( 718, 130 )
+position = Vector2( 652, 292 )
 
 [node name="ActiveItem2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 382, 130 )
+position = Vector2( 420, 292 )
 
 [node name="ActiveItem3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 494, 132 )
+position = Vector2( 500, 292 )
 
 [node name="ActiveItem4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 610, 130 )
+position = Vector2( 577, 292 )
 
 [node name="PassiveItem" parent="." instance=ExtResource( 5 )]
-position = Vector2( 150, 408 )
+position = Vector2( 156, 551 )
 
 [node name="Enemy" parent="." instance=ExtResource( 1 )]
-position = Vector2( 864, 132 )
+position = Vector2( 944, 573 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 132, 140 )
+position = Vector2( 157, 290 )
+
+[node name="HUD" parent="." instance=ExtResource( 6 )]
+
+[connection signal="activeItemConsumed" from="Player" to="HUD" method="_on_Player_activeItemConsumed"]
+[connection signal="activeItemReleased" from="Player" to="HUD" method="_on_Player_activeItemReleased"]
+[connection signal="passiveItemConsumed" from="Player" to="HUD" method="_on_Player_passiveItemConsumed"]
+[connection signal="passiveItemReleased" from="Player" to="HUD" method="_on_Player_passiveItemReleased"]

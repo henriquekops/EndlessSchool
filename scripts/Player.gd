@@ -4,6 +4,11 @@ class_name Player
 
 enum Direction {UP, DOWN, LEFT, RIGHT}
 
+signal passiveItemConsumed
+signal passiveItemReleased
+signal activeItemConsumed
+signal activeItemReleased
+
 export var speed: int = 400
 export var inventory_capacity: int = 3
 export (PackedScene) var Projectile
@@ -65,6 +70,7 @@ func _on_Timer_timeout():
 	sprite.texture = defaultTexture
 	speed = speed / 2
 	timer.stop()
+	emit_signal("passiveItemReleased")
 
 func move() -> Vector2:
 	velocity = Vector2.ZERO
@@ -89,11 +95,13 @@ func apply_item_effect(item):
 			speed = speed * 2
 		timer.start(5)
 		item.queue_free()
+		emit_signal("passiveItemConsumed")
 	elif item.TYPE == "active":
 		if inventory_acc < inventory_capacity:
 			sprite.texture = item.sprite.texture
 			inventory_acc += 1
 			item.queue_free()
+			emit_signal("activeItemConsumed")
 
 func shoot(direction):
 	inventory_acc -= 1
@@ -102,3 +110,4 @@ func shoot(direction):
 	owner.add_child(p)
 	p.transform = projectileSource.global_transform
 	p.direction = direction
+	emit_signal("activeItemReleased")
