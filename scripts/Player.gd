@@ -106,8 +106,8 @@ func apply_item_effect(item):
 func shoot(direction):
 	inventory_acc -= 1
 	var p = Projectile.instance()
-	add_child(p)
-	p.transform = projectileSource.transform
+	get_parent().add_child(p)
+	p.position = projectileSource.global_position
 	p.direction = direction
 	emit_signal("activeItemReleased")
 	if inventory_acc == 0:
