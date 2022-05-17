@@ -44,7 +44,8 @@ func _ready():
 script = SubResource( 1 )
 
 [node name="Door4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 604, 0 )
+position = Vector2( 604, 90 )
+rotation = 1.57079
 target_scene = "res://scenes/levels/Level1.tscn"
 
 [node name="Player" parent="." instance=ExtResource( 2 )]

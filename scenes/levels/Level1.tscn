@@ -12,7 +12,8 @@ position = Vector2( 0, 361 )
 target_scene = "res://scenes/School.tscn"
 
 [node name="Door2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 594, 0 )
+position = Vector2( 594, 90 )
+rotation = 1.57079
 target_scene = "res://scenes/levels/Level2.tscn"
 
 [node name="Door3" parent="." instance=ExtResource( 1 )]
