@@ -24,6 +24,9 @@ onready var sprite: Sprite = $Sprite
 onready var projectileSource = $ProjectileSource
 onready var screen_size: Vector2 = get_viewport_rect().size
 
+
+onready var animatedSprite: AnimatedSprite = $AnimatedSprite
+
 var currentScene = null
 var inventory_acc = 0
 
@@ -36,6 +39,8 @@ var curRoomY = 1;
 var level: int = 1;
 
 var random = RandomNumberGenerator.new();
+
+var curSide = -1;
 
 func _ready() -> void:
 	currentScene = get_child(0)
@@ -74,14 +79,28 @@ func _on_Timer_timeout():
 
 func move() -> Vector2:
 	velocity = Vector2.ZERO
+	var moveu = false;
 	if Input.is_action_pressed("Move Up"):
 		velocity.y -= 1
+		moveu = true;
 	if Input.is_action_pressed("Move Down"):
 		velocity.y += 1
+		moveu = true;
 	if Input.is_action_pressed("Move Right"):
 		velocity.x += 1
+		moveu = true;
+		curSide = 1;
 	if Input.is_action_pressed("Move Left"):
 		velocity.x -= 1
+		moveu = true;
+		curSide = -1;
+	if moveu:
+		if curSide == -1:
+			animatedSprite.play("left");
+		else:
+			animatedSprite.play("right");
+	else:
+		animatedSprite.stop();
 	return velocity
 
 func _on_Area2D_area_entered(area):
