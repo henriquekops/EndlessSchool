@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://fonts/Pixeled.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/Donkey.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/DonkeyUncanny.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Dialog.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 27
@@ -36,6 +37,8 @@ margin_left = 137.0
 margin_top = 399.0
 margin_right = 1176.0
 margin_bottom = 659.0
+script = ExtResource( 3 )
+dialogPath = "res://dialog/Dialog0.json"
 
 [node name="Name" type="RichTextLabel" parent="ColorRect"]
 margin_left = 7.0
@@ -64,7 +67,7 @@ polygon = PoolVector2Array( 0.56044, -0.484848, 0.0329666, 0.727272, -0.494499, 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/Indicator"]
 anims/Indicator = SubResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="ColorRect"]
+[node name="Portrait" type="Sprite" parent="ColorRect"]
 position = Vector2( 123.83, -113 )
 scale = Vector2( 0.397529, 0.371711 )
 texture = ExtResource( 2 )
