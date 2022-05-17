@@ -18,10 +18,10 @@ func _ready():
 				$Player.global_position.x += 100
 			elif door_node.global_position.x > screen_size.x/2:
 				$Player.global_position.x -= 100
-			elif door_node.global_position.y < 5:
+			elif door_node.global_position.y < screen_size.y/2:
 				$Player.global_position.y += 120
 			else:
-				$Player.global_position.y -= 120
+				$Player.global_position.y -= 200
 			
 
 				
