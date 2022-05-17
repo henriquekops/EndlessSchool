@@ -21,7 +21,8 @@ func _ready():
 			elif door_node.global_position.y < screen_size.y/2:
 				$Player.global_position.y += 120
 			else:
-				$Player.global_position.y -= 120
+				print("D")
+				$Player.global_position.y -= 200
 			
 
 				
