@@ -4,28 +4,34 @@ export (String, FILE, "*.json") var dialogPath
 export(float) var textSpeed = 0.05
  
 var dialog
+
+var is_dialogue_active = false
  
 var phraseNum = 0
 var finished = false
  
 func _ready():
-	$DialogueBox.visible = false
-
-
+	$NinePatchRect.visible = false
+	
 func play():
-	$DialogueBox.visible = true
-	$Timer.wait_time = textSpeed
+	if is_dialogue_active:
+		return
+		
+	phraseNum = 0
+	is_dialogue_active = true
+	$NinePatchRect.visible = true
+	$NinePatchRect/Timer.wait_time = textSpeed
 	dialog = getDialog()
 	assert(dialog, "Dialog not found")
 	nextPhrase()
  
 func _process(_delta):
-	$Indicator.visible = finished
+	$NinePatchRect/Indicator.visible = finished
 	if Input.is_action_just_pressed("ui_accept"):
 		if finished:
 			nextPhrase()
 		else:
-			$Text.visible_characters = len($Text.text)
+			$NinePatchRect/Text.visible_characters = len($NinePatchRect/Text.text)
  
 func getDialog() -> Array:
 	var f = File.new()
@@ -36,6 +42,7 @@ func getDialog() -> Array:
 	
 	var output = parse_json(json)
 	
+	
 	if typeof(output) == TYPE_ARRAY:
 		return output
 	else:
@@ -43,27 +50,29 @@ func getDialog() -> Array:
  
 func nextPhrase() -> void:
 	if phraseNum >= len(dialog):
-		queue_free()
+		finished = false
+		is_dialogue_active = false
+		$NinePatchRect.visible = false
 		return
 	
 	finished = false
 	
-	$Name.bbcode_text = dialog[phraseNum]["Name"]
-	$Text.bbcode_text = dialog[phraseNum]["Text"]
+	$NinePatchRect/Name.bbcode_text = dialog[phraseNum]["Name"]
+	$NinePatchRect/Text.bbcode_text = dialog[phraseNum]["Text"]
 	
-	$Text.visible_characters = 0
+	$NinePatchRect/Text.visible_characters = 0
 	
 	var f = File.new()
 	var img = "res://assets/" + dialog[phraseNum]["Name"] + dialog[phraseNum]["Emotion"] + ".png"
 	if f.file_exists(img):
-		$Portrait.texture = load(img)
-	else: $Portrait.texture = null
+		$NinePatchRect/Portrait.texture = load(img)
+	else: $NinePatchRect/Portrait.texture = null
 	
-	while $Text.visible_characters < len($Text.text):
-		$Text.visible_characters += 1
+	while $NinePatchRect/Text.visible_characters < len($NinePatchRect/Text.text):
+		$NinePatchRect/Text.visible_characters += 1
 		
-		$Timer.start()
-		yield($Timer, "timeout")
+		$NinePatchRect/Timer.start()
+		yield($NinePatchRect/Timer, "timeout")
 	
 	finished = true
 	phraseNum += 1
