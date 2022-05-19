@@ -27,6 +27,7 @@ onready var screen_size: Vector2 = get_viewport_rect().size
 
 var currentScene = null
 var inventory_acc = 0
+var passive_status = false
 var active = true
 
 #sala atual
@@ -72,6 +73,7 @@ func _on_Timer_timeout():
 	sprite.texture = defaultTexture
 	speed = speed / 2
 	timer.stop()
+	passive_status = false
 	emit_signal("passiveItemReleased")
 
 func move() -> Vector2:
@@ -92,12 +94,13 @@ func _on_Area2D_area_entered(area):
 		apply_item_effect(area)
 
 func apply_item_effect(item):
-	if item.TYPE == "passive":
+	if item.TYPE == "passive" && !passive_status:
 		if item.effect == item.Effect.VELOCITY:
 			sprite.texture = item.sprite.texture
 			speed = speed * 2
 		timer.start(5)
 		item.queue_free()
+		passive_status = true
 		emit_signal("passiveItemConsumed")
 	elif item.TYPE == "active":
 		if inventory_acc < inventory_capacity:
