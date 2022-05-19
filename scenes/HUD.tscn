@@ -1,0 +1,147 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://fonts/Pixeled.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/placeHolderTexture.png" type="Texture" id=2]
+[ext_resource path="res://assets/hudTexture.png" type="Texture" id=3]
+[ext_resource path="res://scripts/HUD.gd" type="Script" id=4]
+[ext_resource path="res://assets/activeItemSprite.png" type="Texture" id=5]
+[ext_resource path="res://assets/passiveItemSprite.jpg" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=2]
+size = 10
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 10
+font_data = ExtResource( 1 )
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 19.0, 4.0, 29.0 ]
+}
+
+[node name="Area" type="TextureRect" parent="."]
+anchor_right = 1.0
+margin_bottom = 1.0
+rect_scale = Vector2( 1, 90 )
+texture = ExtResource( 3 )
+stretch_mode = 1
+
+[node name="Slots" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Active3" type="TextureRect" parent="Slots"]
+margin_left = 1195.0
+margin_top = 19.0
+margin_right = 1245.0
+margin_bottom = 69.0
+texture = ExtResource( 2 )
+
+[node name="Active2" type="TextureRect" parent="Slots"]
+margin_left = 1133.0
+margin_top = 19.0
+margin_right = 1183.0
+margin_bottom = 69.0
+texture = ExtResource( 2 )
+
+[node name="Active1" type="TextureRect" parent="Slots"]
+margin_left = 1071.0
+margin_top = 19.0
+margin_right = 1121.0
+margin_bottom = 69.0
+texture = ExtResource( 2 )
+
+[node name="Passive3" type="TextureRect" parent="Slots"]
+margin_left = 960.0
+margin_top = 19.0
+margin_right = 1010.0
+margin_bottom = 69.0
+texture = ExtResource( 2 )
+
+[node name="Passive2" type="TextureRect" parent="Slots"]
+margin_left = 896.0
+margin_top = 19.0
+margin_right = 946.0
+margin_bottom = 69.0
+texture = ExtResource( 2 )
+
+[node name="Passive1" type="TextureRect" parent="Slots"]
+margin_left = 831.0
+margin_top = 19.0
+margin_right = 881.0
+margin_bottom = 69.0
+texture = ExtResource( 2 )
+
+[node name="PassiveItems" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="PassiveItem1" type="TextureRect" parent="PassiveItems"]
+margin_left = 841.0
+margin_top = 29.0
+margin_right = 871.0
+margin_bottom = 59.0
+texture = ExtResource( 6 )
+stretch_mode = 1
+
+[node name="PassiveItem2" type="TextureRect" parent="PassiveItems"]
+margin_left = 906.0
+margin_top = 29.0
+margin_right = 936.0
+margin_bottom = 59.0
+texture = ExtResource( 6 )
+stretch_mode = 1
+
+[node name="PassiveItem3" type="TextureRect" parent="PassiveItems"]
+margin_left = 970.0
+margin_top = 29.0
+margin_right = 1000.0
+margin_bottom = 59.0
+texture = ExtResource( 6 )
+stretch_mode = 1
+
+[node name="ActiveItems" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ActiveItem1" type="TextureRect" parent="ActiveItems"]
+margin_left = 1081.0
+margin_top = 29.0
+margin_right = 1111.0
+margin_bottom = 59.0
+texture = ExtResource( 5 )
+stretch_mode = 1
+
+[node name="ActiveItem2" type="TextureRect" parent="ActiveItems"]
+margin_left = 1144.0
+margin_top = 29.0
+margin_right = 1174.0
+margin_bottom = 59.0
+texture = ExtResource( 5 )
+stretch_mode = 1
+
+[node name="ActiveItem3" type="TextureRect" parent="ActiveItems"]
+margin_left = 1205.0
+margin_top = 29.0
+margin_right = 1235.0
+margin_bottom = 59.0
+texture = ExtResource( 5 )
+stretch_mode = 1
+
+[node name="PassiveLabel" type="Label" parent="."]
+margin_left = 831.0
+margin_top = -6.0
+margin_right = 897.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 2 )
+text = "Passive"
+
+[node name="ActiveLabel" type="Label" parent="."]
+margin_left = 1071.0
+margin_top = -6.0
+margin_right = 1127.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 1 )
+text = "Active"
