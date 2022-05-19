@@ -34,6 +34,7 @@ func _process(_delta):
 			$NinePatchRect/Text.visible_characters = len($NinePatchRect/Text.text)
  
 func getDialog() -> Array:
+	turn_off_the_player()
 	var f = File.new()
 	assert(f.file_exists(dialogPath), "File path does not exist")
 	
@@ -53,6 +54,7 @@ func nextPhrase() -> void:
 		finished = false
 		is_dialogue_active = false
 		$NinePatchRect.visible = false
+		turn_on_the_player()
 		return
 	
 	finished = false
@@ -77,3 +79,11 @@ func nextPhrase() -> void:
 	finished = true
 	phraseNum += 1
 	return
+	
+func turn_on_the_player():
+	if PlayerSingleton:
+		PlayerSingleton.active = true
+
+func turn_off_the_player():
+	if PlayerSingleton:
+		PlayerSingleton.active = false

@@ -26,6 +26,7 @@ onready var screen_size: Vector2 = get_viewport_rect().size
 
 var currentScene = null
 var inventory_acc = 0
+var active = true
 
 #sala atual
 
@@ -46,7 +47,7 @@ func _ready() -> void:
 	defaultTexture = sprite.texture
 
 func _input(event):
-	if inventory_acc > 0:
+	if inventory_acc > 0 && active:
 		if event.is_action_pressed("Item Up"):
 			shoot(Direction.UP)
 		elif event.is_action_pressed("Item Down"):
@@ -74,14 +75,15 @@ func _on_Timer_timeout():
 
 func move() -> Vector2:
 	velocity = Vector2.ZERO
-	if Input.is_action_pressed("Move Up"):
-		velocity.y -= 1
-	if Input.is_action_pressed("Move Down"):
-		velocity.y += 1
-	if Input.is_action_pressed("Move Right"):
-		velocity.x += 1
-	if Input.is_action_pressed("Move Left"):
-		velocity.x -= 1
+	if active:
+		if Input.is_action_pressed("Move Up"):
+			velocity.y -= 1
+		if Input.is_action_pressed("Move Down"):
+			velocity.y += 1
+		if Input.is_action_pressed("Move Right"):
+			velocity.x += 1
+		if Input.is_action_pressed("Move Left"):
+			velocity.x -= 1
 	return velocity
 
 func _on_Area2D_area_entered(area):
