@@ -70,10 +70,13 @@ func _physics_process(delta: float) -> void:
 		if collision.collider.name == "Enemy":
 			call_deferred("free")
 			get_tree().change_scene("res://Scenes/GameOver.tscn")
+		
+	
 
 func _on_Timer_timeout():
 	#sprite.texture = defaultTexture
 	speed = speed / 2
+	animatedSprite.speed_scale /= 2;
 	timer.stop()
 	emit_signal("passiveItemReleased")
 
@@ -95,12 +98,13 @@ func move() -> Vector2:
 		moveu = true;
 		curSide = -1;
 	if moveu:
-		if curSide == -1:
+		if curSide == 1:
 			animatedSprite.play("left");
 		else:
 			animatedSprite.play("right");
 	else:
 		animatedSprite.stop();
+		animatedSprite.frame = 0;
 	return velocity
 
 func _on_Area2D_area_entered(area):
@@ -112,6 +116,7 @@ func apply_item_effect(item):
 		if item.effect == item.Effect.VELOCITY:
 			#sprite.texture = item.sprite.texture
 			speed = speed * 2
+			animatedSprite.speed_scale *= 2;
 		timer.start(5)
 		item.queue_free()
 		emit_signal("passiveItemConsumed")
