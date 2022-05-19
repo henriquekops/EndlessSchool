@@ -8,6 +8,7 @@ signal passiveItemConsumed
 signal passiveItemReleased
 signal activeItemConsumed
 signal activeItemReleased
+signal cleanState
 
 export var speed: int = 400
 export var inventory_capacity: int = 3
@@ -65,7 +66,8 @@ func _physics_process(delta: float) -> void:
 	collision = move_and_collide(velocity)
 	if collision != null:
 		if collision.collider.name == "Enemy":
-			call_deferred("free")
+			#call_deferred("free")
+			clean_state()
 			get_tree().change_scene("res://Scenes/GameOver.tscn")
 
 func _on_Timer_timeout():
@@ -115,3 +117,9 @@ func shoot(direction):
 	emit_signal("activeItemReleased")
 	if inventory_acc == 0:
 		sprite.texture = defaultTexture
+
+func clean_state():
+	emit_signal("cleanState")
+	inventory_acc = 0
+	sprite.texture = defaultTexture
+	position = Vector2(0, 90+50)

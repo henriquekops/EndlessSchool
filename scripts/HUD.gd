@@ -14,10 +14,8 @@ func _ready():
 	player.connect("activeItemReleased", self, "_on_Player_activeItemReleased")
 	player.connect("passiveItemConsumed", self, "_on_Player_passiveItemConsumed")
 	player.connect("passiveItemReleased", self, "_on_Player_passiveItemReleased")
-	for item in activeItems:
-		item.visible = false
-	for item in passiveItems:
-		item.visible = false
+	player.connect("cleanState", self, "_on_Player_cleanState")
+	hide_items()
 
 func _on_Player_activeItemConsumed():
 	activeItems[activeItemCount].visible = true
@@ -35,3 +33,13 @@ func _on_Player_passiveItemReleased():
 	passiveItemCount -= 1
 	passiveItems[passiveItemCount].visible = false
 	
+func _on_Player_cleanState():
+	hide_items()
+	passiveItemCount = 0
+	activeItemCount = 0
+
+func hide_items():
+	for item in activeItems:
+		item.visible = false
+	for item in passiveItems:
+		item.visible = false
