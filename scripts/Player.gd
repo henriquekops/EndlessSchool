@@ -11,7 +11,7 @@ signal activeItemReleased
 
 export var speed: int = 400
 export var inventory_capacity: int = 3
-export (PackedScene) var Projectile
+
 
 var sceneLimit : Position2D
 var player : KinematicBody2D
@@ -22,6 +22,7 @@ var defaultTexture: Texture
 onready var timer: Timer = $Timer
 onready var sprite: Sprite = $Sprite
 onready var projectileSource = $ProjectileSource
+onready var Projectile = preload("res://scenes/Projectile.tscn")
 onready var screen_size: Vector2 = get_viewport_rect().size
 
 var currentScene = null
