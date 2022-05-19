@@ -8,7 +8,6 @@ extents = Vector2( 50, 50 )
 
 [node name="Enemy" type="KinematicBody2D" groups=["enemy"]]
 script = ExtResource( 2 )
-fov_distance = 600
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 100, 100 )
