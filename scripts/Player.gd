@@ -48,7 +48,7 @@ func _ready() -> void:
 	player = currentScene.get_node("Player")
 	random.randomize();
 	timer.connect("timeout", self, "_on_Timer_timeout")
-	defaultTexture = sprite.texture
+	#defaultTexture = sprite.texture
 
 func _input(event):
 	if inventory_acc > 0:
@@ -72,7 +72,7 @@ func _physics_process(delta: float) -> void:
 			get_tree().change_scene("res://Scenes/GameOver.tscn")
 
 func _on_Timer_timeout():
-	sprite.texture = defaultTexture
+	#sprite.texture = defaultTexture
 	speed = speed / 2
 	timer.stop()
 	emit_signal("passiveItemReleased")
@@ -110,14 +110,14 @@ func _on_Area2D_area_entered(area):
 func apply_item_effect(item):
 	if item.TYPE == "passive":
 		if item.effect == item.Effect.VELOCITY:
-			sprite.texture = item.sprite.texture
+			#sprite.texture = item.sprite.texture
 			speed = speed * 2
 		timer.start(5)
 		item.queue_free()
 		emit_signal("passiveItemConsumed")
 	elif item.TYPE == "active":
 		if inventory_acc < inventory_capacity:
-			sprite.texture = item.sprite.texture
+			#sprite.texture = item.sprite.texture
 			inventory_acc += 1
 			item.queue_free()
 			emit_signal("activeItemConsumed")
@@ -129,5 +129,5 @@ func shoot(direction):
 	p.transform = projectileSource.global_transform
 	p.direction = direction
 	emit_signal("activeItemReleased")
-	if inventory_acc == 0:
-		sprite.texture = defaultTexture
+	#if inventory_acc == 0:
+		#sprite.texture = defaultTexture
