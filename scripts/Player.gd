@@ -67,7 +67,6 @@ func _physics_process(delta: float) -> void:
 	collision = move_and_collide(velocity)
 	if collision != null:
 		if collision.collider.name == "Enemy":
-			#call_deferred("free")
 			clean_state()
 			get_tree().change_scene("res://Scenes/GameOver.tscn")
 
@@ -124,5 +123,7 @@ func shoot(direction):
 func clean_state():
 	emit_signal("cleanState")
 	inventory_acc = 0
+	passive_status = false
 	sprite.texture = defaultTexture
 	position = Vector2(0, 90+50)
+	timer.stop()

@@ -32,12 +32,6 @@ position = Vector2( 577, 292 )
 [node name="PassiveItem" parent="." instance=ExtResource( 5 )]
 position = Vector2( 96, 424 )
 
-[node name="PassiveItem2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 100, 509 )
-
-[node name="PassiveItem3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 30, 512 )
-
 [node name="Enemy" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1076, 245 )
 
