@@ -38,6 +38,9 @@ margin_top = 19.0
 margin_right = 1245.0
 margin_bottom = 69.0
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Active2" type="TextureRect" parent="Slots"]
 margin_left = 1133.0
