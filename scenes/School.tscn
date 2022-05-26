@@ -9,9 +9,17 @@
 [ext_resource path="res://assets/porta.png" type="Texture" id=7]
 
 [node name="School" type="Node2D"]
+show_behind_parent = true
 __meta__ = {
 "_edit_horizontal_guides_": [ 291.0 ],
 "_edit_vertical_guides_": [ 157.0 ]
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1284.0
+margin_bottom = 711.0
+__meta__ = {
+"_edit_use_anchors_": false
 }
 
 [node name="Door1" parent="." instance=ExtResource( 3 )]

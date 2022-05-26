@@ -44,6 +44,14 @@ func _ready():
 [node name="Level4" type="Node2D"]
 script = SubResource( 1 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1275.0
+margin_bottom = 717.0
+color = Color( 1, 0.752941, 0.796078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Door4" parent="." instance=ExtResource( 1 )]
 position = Vector2( 604, 0 )
 target_scene = "res://scenes/levels/Level1.tscn"
