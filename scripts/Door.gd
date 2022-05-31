@@ -10,7 +10,8 @@ func _ready():
 	load_timer = get_tree().create_timer(0.0)
 
 	
-func wait_for_attack():
+# Sleep function to wait for PlayerSingleton to spawn in new room
+func wait_for_load():
 	if load_timer.time_left <= 0.0 && get_overlapping_bodies().size() > 0:
 		load_timer = get_tree().create_timer(0.1)
 		yield(load_timer, "timeout")
@@ -18,12 +19,11 @@ func wait_for_attack():
 
 	
 func _input(event):
-	
 	if get_overlapping_bodies().size() > 0:
 		if !target_scene:
 			print("No scene in this door")
 			return
-		wait_for_attack()
+		wait_for_load()
 		
 		
 		
@@ -33,6 +33,5 @@ func next_level():
 		if ERR != OK:
 			print("Something failed in the door scene")
 		Global.door_name = name
-	# Disable shooting until timer's timeout complete
 
 
