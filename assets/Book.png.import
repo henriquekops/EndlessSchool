@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PC Computer - Cherry Tree High Comedy Club - Male Student A.png-37a7877a4d6717c74288ed6959c9542f.stex"
+path="res://.import/Book.png-2ff3a3351d32d6e6e5e45fdd7dce3e7b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/PC Computer - Cherry Tree High Comedy Club - Male Student A.png"
-dest_files=[ "res://.import/PC Computer - Cherry Tree High Comedy Club - Male Student A.png-37a7877a4d6717c74288ed6959c9542f.stex" ]
+source_file="res://assets/Book.png"
+dest_files=[ "res://.import/Book.png-2ff3a3351d32d6e6e5e45fdd7dce3e7b.stex" ]
 
 [params]
 

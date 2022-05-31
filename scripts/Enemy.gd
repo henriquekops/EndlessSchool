@@ -16,28 +16,17 @@ onready var raycast_coordinates: Array = raycast_coordinates()
 
 onready var animatedSprite: AnimatedSprite = $AnimatedSprite;
 
-func verificaAnimacao(player):
-	var vertical = 0;
-	var horizontal = 0;
-	if player.position.y > position.y:
-		vertical = 1;
-	else:
-		vertical = -1;
-		
-	if player.position.x > position.x:
-		horizontal = 1;
-	else:
-		horizontal = -1;
+func verificaAnimacao(dir):
 	
 	var animacaoAtual = "down";
-	if vertical == -1:
+	if dir[0] > -0.82 && dir[0] < 0.82 && dir[1] < -0.5 : 
 		animacaoAtual = "up";
-	elif horizontal == 1:
-		animacaoAtual = "right";
-	elif vertical == 1:
+	elif dir[0] > -0.82 && dir[0] < 0.82 && dir[1] > 0.5: 
 		animacaoAtual = "down";
-	else:
+	elif dir[0] < 0 && dir[1] < 0.5:
 		animacaoAtual = "left";
+	else:
+		animacaoAtual = "right";
 	animatedSprite.play(animacaoAtual);
 	pass
 
@@ -49,12 +38,13 @@ func _physics_process(delta: float) -> void:
 		raycast.force_raycast_update()
 		if raycast.is_colliding() and raycast.get_collider() is Player:
 			
-			verificaAnimacao( raycast.get_collider());
+			
 			
 			target = raycast.get_collision_point()
 			var dir = (target - global_position).normalized()
 			position.x = clamp(position.x, 50, screen_size.x-50)
 			position.y = clamp(position.y, 50+90, screen_size.y-50)
+			verificaAnimacao(dir)
 			move_and_collide(dir * speed * delta)
 			break
 

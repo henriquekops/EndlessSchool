@@ -2,8 +2,8 @@ extends CanvasLayer
 
 class_name HUD
 
-onready var activeItems = $ActiveItems.get_children()
-onready var passiveItems = $PassiveItems.get_children()
+onready var activeItems = HudSingleton.get_child(0).get_child(3).get_children()
+onready var passiveItems = HudSingleton.get_child(0).get_child(2).get_children()
 onready var player = PlayerSingleton
 
 var passiveItemCount = 0
@@ -14,6 +14,7 @@ func _ready():
 	player.connect("activeItemReleased", self, "_on_Player_activeItemReleased")
 	player.connect("passiveItemConsumed", self, "_on_Player_passiveItemConsumed")
 	player.connect("passiveItemReleased", self, "_on_Player_passiveItemReleased")
+	player.connect("inventoryClear", self, "_on_Player_inventoryClear")
 	for item in activeItems:
 		item.visible = false
 	for item in passiveItems:
@@ -34,4 +35,12 @@ func _on_Player_passiveItemConsumed():
 func _on_Player_passiveItemReleased():
 	passiveItemCount -= 1
 	passiveItems[passiveItemCount].visible = false
+	
+func _on_Player_inventoryClear():
+	passiveItems[0].visible = false
+	activeItems[0].visible = false
+	activeItems[1].visible = false
+	activeItems[2].visible = false
+	activeItemCount = 0
+	passiveItemCount = 0
 	

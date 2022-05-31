@@ -16,10 +16,7 @@ __meta__ = {
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1284.0
-margin_bottom = 711.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_bottom = 723.0
 
 [node name="Door1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1280, 393 )
@@ -49,7 +46,7 @@ position = Vector2( 100, 509 )
 position = Vector2( 30, 512 )
 
 [node name="Enemy" parent="." instance=ExtResource( 1 )]
-position = Vector2( 669, 84 )
+position = Vector2( 766, 347 )
 
 [node name="Student" parent="." instance=ExtResource( 6 )]
 position = Vector2( 92, 607 )

@@ -8,6 +8,7 @@ signal passiveItemConsumed
 signal passiveItemReleased
 signal activeItemConsumed
 signal activeItemReleased
+signal inventoryClear
 
 export var speed: int = 400
 export var inventory_capacity: int = 3
@@ -69,9 +70,17 @@ func _physics_process(delta: float) -> void:
 	position.x = clamp(position.x, 50, screen_size.x-50)
 	position.y = clamp(position.y, 50+90, screen_size.y-50)
 	collision = move_and_collide(velocity)
+	if(velocity[0] == 0 && velocity[1] == 0):
+		animatedSprite.stop();
+		animatedSprite.frame = 0;
 	if collision != null:
 		if collision.collider.name == "Enemy":
-			call_deferred("free")
+			#call_deferred("free")
+			PlayerSingleton.visible = false
+			HudSingleton.get_child(0).hide()
+			emit_signal("inventoryClear")
+			inventory_acc = 0
+			passive_status = false
 			get_tree().change_scene("res://Scenes/GameOver.tscn")
 		
 	
@@ -86,29 +95,6 @@ func _on_Timer_timeout():
 
 func move() -> Vector2:
 	velocity = Vector2.ZERO
-	var moveu = false;
-	if Input.is_action_pressed("Move Up"):
-		velocity.y -= 1
-		moveu = true;
-	if Input.is_action_pressed("Move Down"):
-		velocity.y += 1
-		moveu = true;
-	if Input.is_action_pressed("Move Right"):
-		velocity.x += 1
-		moveu = true;
-		curSide = 1;
-	if Input.is_action_pressed("Move Left"):
-		velocity.x -= 1
-		moveu = true;
-		curSide = -1;
-	if moveu:
-		if curSide == 1:
-			animatedSprite.play("left");
-		else:
-			animatedSprite.play("right");
-	else:
-		animatedSprite.stop();
-		animatedSprite.frame = 0;
 	if active:
 		if Input.is_action_pressed("Move Up"):
 			velocity.y -= 1
@@ -116,8 +102,15 @@ func move() -> Vector2:
 			velocity.y += 1
 		if Input.is_action_pressed("Move Right"):
 			velocity.x += 1
+			curSide = 1
 		if Input.is_action_pressed("Move Left"):
 			velocity.x -= 1
+			curSide = -1
+	if(curSide == -1):
+		animatedSprite.play("left");
+	else:
+		animatedSprite.play("right");
+			
 	return velocity
 
 func _on_Area2D_area_entered(area):

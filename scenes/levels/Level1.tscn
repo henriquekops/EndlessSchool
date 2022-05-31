@@ -7,12 +7,9 @@
 script = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 1275.0
-margin_bottom = 717.0
+margin_right = 1283.0
+margin_bottom = 719.0
 color = Color( 1, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Door1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, 361 )
