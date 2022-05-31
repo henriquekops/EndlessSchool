@@ -13,4 +13,5 @@ color = Color( 0, 1, 0, 1 )
 
 [node name="Door2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 630, 720 )
+rotation = -1.57079
 target_scene = "res://scenes/levels/Level1.tscn"

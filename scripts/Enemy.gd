@@ -16,7 +16,7 @@ onready var raycast_coordinates: Array = raycast_coordinates()
 
 onready var animatedSprite: AnimatedSprite = $AnimatedSprite;
 
-func verificaAnimacao(dir):
+func sprite_direction(dir):
 	
 	var animacaoAtual = "down";
 	if dir[0] > -0.82 && dir[0] < 0.82 && dir[1] < -0.5 : 
@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 			var dir = (target - global_position).normalized()
 			position.x = clamp(position.x, 50, screen_size.x-50)
 			position.y = clamp(position.y, 50+90, screen_size.y-50)
-			verificaAnimacao(dir)
+			sprite_direction(dir)
 			move_and_collide(dir * speed * delta)
 			break
 

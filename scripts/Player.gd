@@ -90,10 +90,6 @@ func reset():
 		speed = speed / 2
 		animatedSprite.speed_scale /= 2;
 		
-		
-	
-
-
 func _on_Timer_timeout():
 	#sprite.texture = defaultTexture
 	speed = speed / 2
