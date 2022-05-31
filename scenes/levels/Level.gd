@@ -8,10 +8,12 @@ func _ready():
 		if door_node:
 			PlayerSingleton.global_position = door_node.global_position
 			if door_node.global_position.x == 0:
-				PlayerSingleton.global_position.x += 100
+				PlayerSingleton.global_position.x = 300
 			elif door_node.global_position.x > screen_size.x/2:
-				PlayerSingleton.global_position.x -= 100
+				PlayerSingleton.global_position.x = screen_size.x - 300
 			elif door_node.global_position.y < screen_size.y/2:
-				PlayerSingleton.global_position.y += 120
+				PlayerSingleton.global_position.y = 200
 			else:
-				PlayerSingleton.global_position.y -= 200
+				PlayerSingleton.global_position.y = screen_size.y - 200
+		
+
