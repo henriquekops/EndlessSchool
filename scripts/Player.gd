@@ -76,14 +76,23 @@ func _physics_process(delta: float) -> void:
 	if collision != null:
 		if collision.collider.name == "Enemy":
 			#call_deferred("free")
-			PlayerSingleton.visible = false
-			HudSingleton.get_child(0).hide()
-			emit_signal("inventoryClear")
-			inventory_acc = 0
-			passive_status = false
+			reset()
 			get_tree().change_scene("res://Scenes/GameOver.tscn")
 		
+func reset():
+	PlayerSingleton.visible = false
+	HudSingleton.get_child(0).hide()
+	emit_signal("inventoryClear")
+	inventory_acc = 0
+	passive_status = false
+	if(timer.time_left > 0):
+		timer.stop()
+		speed = speed / 2
+		animatedSprite.speed_scale /= 2;
+		
+		
 	
+
 
 func _on_Timer_timeout():
 	#sprite.texture = defaultTexture
