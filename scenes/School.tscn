@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/ActiveItem.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/PassiveItem.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/porta.png" type="Texture" id=7]
+[ext_resource path="res://scenes/Student.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/DialogueBox.tscn" type="PackedScene" id=7]
 
 [node name="School" type="Node2D"]
 show_behind_parent = true
@@ -27,7 +26,6 @@ position = Vector2( 1280, 393 )
 target_scene = "res://scenes/levels/Level1.tscn"
 
 [node name="Sprite2" type="Sprite" parent="Door1"]
-texture = ExtResource( 7 )
 
 [node name="ActiveItem" parent="." instance=ExtResource( 4 )]
 position = Vector2( 652, 292 )
@@ -42,11 +40,25 @@ position = Vector2( 500, 292 )
 position = Vector2( 577, 292 )
 
 [node name="PassiveItem" parent="." instance=ExtResource( 5 )]
-position = Vector2( 156, 551 )
+position = Vector2( 96, 424 )
+
+[node name="PassiveItem2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 100, 509 )
+
+[node name="PassiveItem3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 30, 512 )
 
 [node name="Enemy" parent="." instance=ExtResource( 1 )]
-position = Vector2( 944, 573 )
+position = Vector2( 1076, 245 )
 
-[node name="HUD" parent="." instance=ExtResource( 6 )]
+[node name="Student" parent="." instance=ExtResource( 6 )]
+position = Vector2( 92, 607 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
+[node name="DialogueBox" parent="Student" instance=ExtResource( 7 )]
+dialogPath = "res://dialog/Dialog0.json"
+
+[node name="Student2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 251, 608 )
+
+[node name="DialogueBox" parent="Student2" instance=ExtResource( 7 )]
+dialogPath = "res://dialog/Dialog1.json"

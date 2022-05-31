@@ -56,51 +56,22 @@ margin_right = 1121.0
 margin_bottom = 69.0
 texture = ExtResource( 2 )
 
-[node name="Passive3" type="TextureRect" parent="Slots"]
-margin_left = 960.0
-margin_top = 19.0
-margin_right = 1010.0
-margin_bottom = 69.0
-texture = ExtResource( 2 )
-
-[node name="Passive2" type="TextureRect" parent="Slots"]
-margin_left = 896.0
-margin_top = 19.0
-margin_right = 946.0
-margin_bottom = 69.0
-texture = ExtResource( 2 )
-
 [node name="Passive1" type="TextureRect" parent="Slots"]
-margin_left = 831.0
+margin_left = 986.0
 margin_top = 19.0
-margin_right = 881.0
+margin_right = 1036.0
 margin_bottom = 69.0
 texture = ExtResource( 2 )
 
 [node name="PassiveItems" type="Control" parent="."]
-margin_right = 40.0
+margin_left = 155.0
+margin_right = 195.0
 margin_bottom = 40.0
 
 [node name="PassiveItem1" type="TextureRect" parent="PassiveItems"]
 margin_left = 841.0
 margin_top = 29.0
 margin_right = 871.0
-margin_bottom = 59.0
-texture = ExtResource( 6 )
-stretch_mode = 1
-
-[node name="PassiveItem2" type="TextureRect" parent="PassiveItems"]
-margin_left = 906.0
-margin_top = 29.0
-margin_right = 936.0
-margin_bottom = 59.0
-texture = ExtResource( 6 )
-stretch_mode = 1
-
-[node name="PassiveItem3" type="TextureRect" parent="PassiveItems"]
-margin_left = 970.0
-margin_top = 29.0
-margin_right = 1000.0
 margin_bottom = 59.0
 texture = ExtResource( 6 )
 stretch_mode = 1
@@ -134,9 +105,9 @@ texture = ExtResource( 5 )
 stretch_mode = 1
 
 [node name="PassiveLabel" type="Label" parent="."]
-margin_left = 831.0
+margin_left = 978.0
 margin_top = -6.0
-margin_right = 897.0
+margin_right = 1044.0
 margin_bottom = 22.0
 custom_fonts/font = SubResource( 2 )
 text = "Passive"

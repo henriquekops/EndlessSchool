@@ -11,7 +11,7 @@ signal activeItemReleased
 
 export var speed: int = 400
 export var inventory_capacity: int = 3
-export (PackedScene) var Projectile
+
 
 var sceneLimit : Position2D
 var player : KinematicBody2D
@@ -22,6 +22,7 @@ var defaultTexture: Texture
 onready var timer: Timer = $Timer
 onready var sprite: Sprite = $Sprite
 onready var projectileSource = $ProjectileSource
+onready var Projectile = preload("res://scenes/Projectile.tscn")
 onready var screen_size: Vector2 = get_viewport_rect().size
 
 
@@ -29,6 +30,8 @@ onready var animatedSprite: AnimatedSprite = $AnimatedSprite
 
 var currentScene = null
 var inventory_acc = 0
+var passive_status = false
+var active = true
 
 #sala atual
 
@@ -51,7 +54,7 @@ func _ready() -> void:
 	#defaultTexture = sprite.texture
 
 func _input(event):
-	if inventory_acc > 0:
+	if inventory_acc > 0 && active:
 		if event.is_action_pressed("Item Up"):
 			shoot(Direction.UP)
 		elif event.is_action_pressed("Item Down"):
@@ -78,6 +81,7 @@ func _on_Timer_timeout():
 	speed = speed / 2
 	animatedSprite.speed_scale /= 2;
 	timer.stop()
+	passive_status = false
 	emit_signal("passiveItemReleased")
 
 func move() -> Vector2:
@@ -105,6 +109,15 @@ func move() -> Vector2:
 	else:
 		animatedSprite.stop();
 		animatedSprite.frame = 0;
+	if active:
+		if Input.is_action_pressed("Move Up"):
+			velocity.y -= 1
+		if Input.is_action_pressed("Move Down"):
+			velocity.y += 1
+		if Input.is_action_pressed("Move Right"):
+			velocity.x += 1
+		if Input.is_action_pressed("Move Left"):
+			velocity.x -= 1
 	return velocity
 
 func _on_Area2D_area_entered(area):
@@ -112,13 +125,14 @@ func _on_Area2D_area_entered(area):
 		apply_item_effect(area)
 
 func apply_item_effect(item):
-	if item.TYPE == "passive":
+	if item.TYPE == "passive" && !passive_status:
 		if item.effect == item.Effect.VELOCITY:
 			#sprite.texture = item.sprite.texture
 			speed = speed * 2
 			animatedSprite.speed_scale *= 2;
 		timer.start(5)
 		item.queue_free()
+		passive_status = true
 		emit_signal("passiveItemConsumed")
 	elif item.TYPE == "active":
 		if inventory_acc < inventory_capacity:
@@ -130,8 +144,8 @@ func apply_item_effect(item):
 func shoot(direction):
 	inventory_acc -= 1
 	var p = Projectile.instance()
-	owner.add_child(p)
-	p.transform = projectileSource.global_transform
+	get_parent().add_child(p)
+	p.position = projectileSource.global_position
 	p.direction = direction
 	emit_signal("activeItemReleased")
 	#if inventory_acc == 0:
