@@ -9,41 +9,6 @@ extents = Vector2( 50, 50 )
 [sub_resource type="CircleShape2D" id=4]
 radius = 72.1734
 
-[sub_resource type="AtlasTexture" id=12]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 99, 57, 99 )
-
-[sub_resource type="AtlasTexture" id=13]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 57, 99, 57, 99 )
-
-[sub_resource type="AtlasTexture" id=14]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 114, 99, 57, 99 )
-
-[sub_resource type="AtlasTexture" id=15]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 171, 99, 57, 99 )
-
-[sub_resource type="AtlasTexture" id=16]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 228, 99, 57, 99 )
-
-[sub_resource type="AtlasTexture" id=17]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 285, 99, 57, 99 )
-
-[sub_resource type="AtlasTexture" id=18]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 342, 99, 57, 99 )
-
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 1 )
@@ -79,16 +44,51 @@ flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 342, 0, 57, 99 )
 
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 99, 57, 99 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 57, 99, 57, 99 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 114, 99, 57, 99 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 171, 99, 57, 99 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 228, 99, 57, 99 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 285, 99, 57, 99 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 342, 99, 57, 99 )
+
 [sub_resource type="SpriteFrames" id=19]
 animations = [ {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
-"loop": true,
-"name": "right",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
 "name": "left",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "right",
 "speed": 5.0
 } ]
 
