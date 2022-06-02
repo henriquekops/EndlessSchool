@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://fonts/Pixeled.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/DonkeyUncanny.png" type="Texture" id=2]
+[ext_resource path="res://assets/GirlNormal.png" type="Texture" id=2]
 [ext_resource path="res://assets/PlayerSprite.jpg" type="Texture" id=3]
 [ext_resource path="res://scripts/Dialog.gd" type="Script" id=4]
 
@@ -68,8 +68,8 @@ autoplay = "Indicator"
 anims/Indicator = SubResource( 3 )
 
 [node name="Portrait" type="Sprite" parent="NinePatchRect"]
-position = Vector2( 123.83, -113 )
-scale = Vector2( 0.397529, 0.371711 )
+position = Vector2( 94, -125 )
+scale = Vector2( 0.889586, 0.831811 )
 texture = ExtResource( 2 )
 
 [node name="Timer" type="Timer" parent="NinePatchRect"]

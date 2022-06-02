@@ -6,6 +6,11 @@
 [node name="Level1" type="Node2D"]
 script = ExtResource( 3 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1283.0
+margin_bottom = 719.0
+color = Color( 1, 0, 0, 1 )
+
 [node name="Door1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, 361 )
 target_scene = "res://scenes/School.tscn"
@@ -17,9 +22,10 @@ target_scene = "res://scenes/levels/Level2.tscn"
 
 [node name="Door3" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1280, 361 )
+rotation = 3.14159
 target_scene = "res://scenes/levels/Level3.tscn"
 
 [node name="Door4" parent="." instance=ExtResource( 1 )]
 position = Vector2( 594, 720 )
-rotation = 1.57079
+rotation = 4.71238
 target_scene = "res://scenes/levels/Level4.tscn"
