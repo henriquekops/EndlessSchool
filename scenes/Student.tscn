@@ -106,16 +106,17 @@ radius = 96.421
 [node name="Student" type="StaticBody2D"]
 collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2( 0.5, -19.5 )
 shape = SubResource( 18 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+z_index = 1
 frames = SubResource( 16 )
 animation = "right"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="DialogueRadius" type="Area2D" parent="."]
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueRadius"]
 shape = SubResource( 19 )
