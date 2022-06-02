@@ -56,7 +56,7 @@ dialogPath = "res://dialog/Dialog1.json"
 [node name="Student2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 225, 607 )
 
-[node name="AnimatedSprite" parent="Student2" index="0"]
+[node name="AnimatedSprite" parent="Student2" index="1"]
 animation = "left"
 
 [node name="DialogueBox" parent="Student2" instance=ExtResource( 7 )]

@@ -5,6 +5,6 @@ func _input(event):
 		find_and_use_dialogue()
 		
 func find_and_use_dialogue():
-	var dialogue_player = get_node("DialogueBox")
+	var dialogue_player = get_node("../DialogueBox")
 	if dialogue_player:
 		dialogue_player.play()

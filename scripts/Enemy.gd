@@ -37,9 +37,6 @@ func _physics_process(delta: float) -> void:
 		raycast.cast_to = ray_coordinate
 		raycast.force_raycast_update()
 		if raycast.is_colliding() and raycast.get_collider() is Player:
-			
-			
-			
 			target = raycast.get_collision_point()
 			var dir = (target - global_position).normalized()
 			position.x = clamp(position.x, 50, screen_size.x-50)
