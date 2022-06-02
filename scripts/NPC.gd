@@ -1,8 +1,6 @@
 extends Area2D
 
 func _input(event):
-	
-	print(len(get_overlapping_bodies()))
 	if event.is_action_pressed("Interact") and len(get_overlapping_bodies()) > 1:
 		find_and_use_dialogue()
 		
