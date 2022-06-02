@@ -37,6 +37,7 @@ func getDialog() -> Array:
 	turn_off_the_player()
 	var f = File.new()
 	assert(f.file_exists(dialogPath), "File path does not exist")
+	print(dialogPath)
 	
 	f.open(dialogPath, File.READ)
 	var json = f.get_as_text()

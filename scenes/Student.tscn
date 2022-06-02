@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/EasterEgg.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 20.5, 48 )
+extents = Vector2( 20.5, 28.5 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
@@ -101,17 +101,16 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=19]
-radius = 122.004
+radius = 96.421
 
 [node name="Student" type="StaticBody2D"]
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.5, 0 )
+position = Vector2( 0.5, -19.5 )
 shape = SubResource( 18 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-z_index = 1
 frames = SubResource( 16 )
 animation = "right"
 
