@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GirlSurprised.png-7def783e6eb6c02fc5c0241e1e8e8228.stex"
+path="res://.import/Happy.png-dee2f964e6265a126ecd44420d5cd3c4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/Girl/GirlSurprised.png"
-dest_files=[ "res://.import/GirlSurprised.png-7def783e6eb6c02fc5c0241e1e8e8228.stex" ]
+source_file="res://assets/characters/Girl/Happy.png"
+dest_files=[ "res://.import/Happy.png-dee2f964e6265a126ecd44420d5cd3c4.stex" ]
 
 [params]
 

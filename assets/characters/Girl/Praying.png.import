@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GirlAngry.png-8e0d2b49b56908050e17baf34a755ef6.stex"
+path="res://.import/Praying.png-b6e8f576da105e1ccecde601b8f1d33e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/Girl/GirlAngry.png"
-dest_files=[ "res://.import/GirlAngry.png-8e0d2b49b56908050e17baf34a755ef6.stex" ]
+source_file="res://assets/characters/Girl/Praying.png"
+dest_files=[ "res://.import/Praying.png-b6e8f576da105e1ccecde601b8f1d33e.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GirlSad.png-37d9a5891aede34f6f426545d4ea06d7.stex"
+path="res://.import/Uncanny.png-c457dc9bf5b8ed8e0d722bdee15e4380.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/Girl/GirlSad.png"
-dest_files=[ "res://.import/GirlSad.png-37d9a5891aede34f6f426545d4ea06d7.stex" ]
+source_file="res://assets/characters/Donkey/Uncanny.png"
+dest_files=[ "res://.import/Uncanny.png-c457dc9bf5b8ed8e0d722bdee15e4380.stex" ]
 
 [params]
 

@@ -65,7 +65,7 @@ func nextPhrase() -> void:
 	$NinePatchRect/Text.visible_characters = 0
 	
 	var f = File.new()
-	var img = "res://assets/characters/" + dialog[phraseNum]["Name"] + "/" + dialog[phraseNum]["Name"] + dialog[phraseNum]["Emotion"] + ".png"
+	var img = "res://assets/characters/" + dialog[phraseNum]["Name"] + "/" + dialog[phraseNum]["Emotion"] + ".png"
 	if f.file_exists(img):
 		$NinePatchRect/Portrait.texture = load(img)
 	else: $NinePatchRect/Portrait.texture = null

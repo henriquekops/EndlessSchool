@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/DonkeyHappy.png-f85b87f0794a463087fbf6388de9b200.stex"
+path="res://.import/Angry.png-f1ee4aaceb44f14cc56d5953571d958d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/Donkey/DonkeyHappy.png"
-dest_files=[ "res://.import/DonkeyHappy.png-f85b87f0794a463087fbf6388de9b200.stex" ]
+source_file="res://assets/characters/Girl/Angry.png"
+dest_files=[ "res://.import/Angry.png-f1ee4aaceb44f14cc56d5953571d958d.stex" ]
 
 [params]
 

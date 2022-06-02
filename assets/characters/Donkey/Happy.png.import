@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/DonkeyUncanny.png-60165a0c44bedc42fabe62caa919aefd.stex"
+path="res://.import/Happy.png-b3cb577cd488cf05c351673f58a9d28d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/Donkey/DonkeyUncanny.png"
-dest_files=[ "res://.import/DonkeyUncanny.png-60165a0c44bedc42fabe62caa919aefd.stex" ]
+source_file="res://assets/characters/Donkey/Happy.png"
+dest_files=[ "res://.import/Happy.png-b3cb577cd488cf05c351673f58a9d28d.stex" ]
 
 [params]
 
