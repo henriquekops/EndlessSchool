@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GirlSad.png-d6b6d2d2cf14ef0ba8b62f778f62eca4.stex"
+path="res://.import/GirlHappy.png-c0e24159dbb1a3862200ec56e3f62f22.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GirlSad.png"
-dest_files=[ "res://.import/GirlSad.png-d6b6d2d2cf14ef0ba8b62f778f62eca4.stex" ]
+source_file="res://assets/characters/Girl/GirlHappy.png"
+dest_files=[ "res://.import/GirlHappy.png-c0e24159dbb1a3862200ec56e3f62f22.stex" ]
 
 [params]
 
