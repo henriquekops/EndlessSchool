@@ -4,20 +4,22 @@ class_name Projectile
 
 enum Direction {UP, DOWN, LEFT, RIGHT}
 
-export var speed = 700
+export var speed = 700;
+
+var deltaspeed = PlayerSingleton.shootrange;
 
 onready var direction: int =  Direction.UP
 
 func _physics_process(delta):
 	match direction:
 		Direction.UP:
-			position -= transform.y * speed * delta
+			position -= transform.y * speed * delta * deltaspeed
 		Direction.DOWN:
-			position += transform.y * speed * delta
+			position += transform.y * speed * delta * deltaspeed
 		Direction.LEFT:
-			position -= transform.x * speed * delta
+			position -= transform.x * speed * delta * deltaspeed
 		Direction.RIGHT:
-			position += transform.x * speed * delta
+			position += transform.x * speed * delta * deltaspeed
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()

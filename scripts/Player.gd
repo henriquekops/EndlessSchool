@@ -25,7 +25,7 @@ onready var sprite: Sprite = $Sprite
 onready var projectileSource = $ProjectileSource
 onready var Projectile = preload("res://scenes/Projectile.tscn")
 onready var screen_size: Vector2 = get_viewport_rect().size
-
+onready var rangeArea: Area2D = $Area2D
 
 onready var animatedSprite: AnimatedSprite = $AnimatedSprite
 
@@ -45,6 +45,8 @@ var level: int = 1;
 var random = RandomNumberGenerator.new();
 
 var curSide = -1;
+
+export var shootrange = 1;
 
 func _ready() -> void:
 	currentScene = get_child(0)
@@ -128,6 +130,8 @@ func apply_item_effect(item):
 			#sprite.texture = item.sprite.texture
 			speed = speed * 2
 			animatedSprite.speed_scale *= 2;
+		elif item.effect == item.Effect.FOV:
+			shootrange = 2;
 		timer.start(5)
 		item.queue_free()
 		passive_status = true
