@@ -52,6 +52,7 @@ func _ready() -> void:
 	player = currentScene.get_node("Player")
 	random.randomize();
 	timer.connect("timeout", self, "_on_Timer_timeout")
+	animatedSprite.speed_scale *= 1.5;
 	#defaultTexture = sprite.texture
 
 func _input(event):
@@ -71,7 +72,11 @@ func _physics_process(delta: float) -> void:
 	position.y = clamp(position.y, 50+90, screen_size.y-50)
 	collision = move_and_collide(velocity)
 	if(velocity[0] == 0 && velocity[1] == 0):
-		animatedSprite.stop();
+		if(curSide == -1):
+			animatedSprite.play("stillLeft");
+		else:
+			animatedSprite.play("stillRight");
+		#animatedSprite.stop();
 		animatedSprite.frame = 0;
 	if collision != null:
 		if collision.collider.name == "Enemy":
