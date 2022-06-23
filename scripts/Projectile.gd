@@ -4,9 +4,13 @@ class_name Projectile
 
 enum Direction {UP, DOWN, LEFT, RIGHT}
 
-export var speed = 700
+export var speed = 600
 
 onready var direction: int =  Direction.UP
+
+func _process(delta):
+	var degrees_per_second = 360.0
+	$Sprite.rotate(delta * deg2rad(degrees_per_second))
 
 func _physics_process(delta):
 	match direction:
