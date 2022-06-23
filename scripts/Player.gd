@@ -125,19 +125,19 @@ func _on_Area2D_area_entered(area):
 func apply_item_effect(item):
 	if item.TYPE == "passive" && !passive_status:
 		if item.effect == item.Effect.VELOCITY:
-			#sprite.texture = item.sprite.texture
 			speed = speed * 2
 			animatedSprite.speed_scale *= 2;
+		# if item.effect == item.Effect.FOV:
+			# increase fov
+		emit_signal("passiveItemConsumed", item.sprite.texture)
 		timer.start(5)
 		item.queue_free()
 		passive_status = true
-		emit_signal("passiveItemConsumed")
 	elif item.TYPE == "active":
 		if inventory_acc < inventory_capacity:
-			#sprite.texture = item.sprite.texture
 			inventory_acc += 1
-			item.queue_free()
-			emit_signal("activeItemConsumed")
+		emit_signal("activeItemConsumed", item.sprite.texture)
+		item.queue_free()
 
 func shoot(direction):
 	inventory_acc -= 1

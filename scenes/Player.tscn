@@ -4,45 +4,10 @@
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 42, 62 )
+extents = Vector2( 50, 50 )
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 89.0056
-
-[sub_resource type="AtlasTexture" id=20]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 57, 99 )
-
-[sub_resource type="AtlasTexture" id=21]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 57, 0, 57, 99 )
-
-[sub_resource type="AtlasTexture" id=22]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 114, 0, 57, 99 )
-
-[sub_resource type="AtlasTexture" id=23]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 171, 0, 57, 99 )
-
-[sub_resource type="AtlasTexture" id=24]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 228, 0, 57, 99 )
-
-[sub_resource type="AtlasTexture" id=25]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 285, 0, 57, 99 )
-
-[sub_resource type="AtlasTexture" id=26]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 342, 0, 57, 99 )
+radius = 72.1734
 
 [sub_resource type="AtlasTexture" id=27]
 flags = 4
@@ -79,16 +44,51 @@ flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 342, 99, 57, 99 )
 
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 57, 99 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 57, 0, 57, 99 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 114, 0, 57, 99 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 171, 0, 57, 99 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 228, 0, 57, 99 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 285, 0, 57, 99 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 342, 0, 57, 99 )
+
 [sub_resource type="SpriteFrames" id=19]
 animations = [ {
-"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
-"loop": true,
-"name": "left",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ) ],
 "loop": true,
 "name": "right",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
+"loop": true,
+"name": "left",
 "speed": 5.0
 } ]
 
