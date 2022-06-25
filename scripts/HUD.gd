@@ -4,11 +4,13 @@ class_name HUD
 
 onready var activeItems = HudSingleton.get_child(0).get_child(3).get_children()
 onready var passiveItems = HudSingleton.get_child(0).get_child(2).get_children()
-onready var player = PlayerSingleton
 onready var mutex = Mutex.new()
+onready var player = PlayerSingleton
 
 var passiveItemCount = 0
 var activeItemCount = 0
+
+signal activeItemShot
 
 func _ready():
 	MusicController.play_music()
@@ -27,6 +29,7 @@ func _on_Player_activeItemConsumed(texture):
 func _on_Player_activeItemReleased():
 	mutex.lock()
 	activeItemCount -= 1
+	emit_signal("activeItemShot", activeItems[activeItemCount].texture.get_path())
 	activeItems[activeItemCount].texture = null
 	mutex.unlock()
 	
@@ -43,10 +46,10 @@ func _on_Player_passiveItemReleased():
 	mutex.unlock()
 
 func _on_Player_inventoryClear():
-	passiveItems[0].visible = false
-	activeItems[0].visible = false
-	activeItems[1].visible = false
-	activeItems[2].visible = false
+	passiveItems[0].texture = null
+	activeItems[0].texture = null
+	activeItems[1].texture = null
+	activeItems[2].texture = null
 	activeItemCount = 0
 	passiveItemCount = 0
 	

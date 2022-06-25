@@ -7,7 +7,16 @@ enum Direction {UP, DOWN, LEFT, RIGHT}
 export var speed = 600
 
 onready var direction: int =  Direction.UP
+onready var hud = HudSingleton
 
+
+func _ready():
+	hud.connect("activeItemShot", self, "_on_Hud_activeItemShot")
+	
+func _on_Hud_activeItemShot(texture):
+	$Sprite.texture = load(texture)
+	
+	
 func _process(delta):
 	var degrees_per_second = 360.0
 	$Sprite.rotate(delta * deg2rad(degrees_per_second))
