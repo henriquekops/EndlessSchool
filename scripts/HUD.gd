@@ -11,6 +11,7 @@ var passiveItemCount = 0
 var activeItemCount = 0
 
 func _ready():
+	MusicController.play_music()
 	player.connect("activeItemConsumed", self, "_on_Player_activeItemConsumed")
 	player.connect("activeItemReleased", self, "_on_Player_activeItemReleased")
 	player.connect("passiveItemConsumed", self, "_on_Player_passiveItemConsumed")
