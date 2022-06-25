@@ -135,9 +135,11 @@ func apply_item_effect(item):
 		passive_status = true
 	elif item.TYPE == "active":
 		if inventory_acc < inventory_capacity:
+			print("Inventory acc: " , inventory_acc)
+			print("inventory_capacity: " , inventory_capacity)
 			inventory_acc += 1
-		emit_signal("activeItemConsumed", item.sprite.texture)
-		item.queue_free()
+			emit_signal("activeItemConsumed", item.sprite.texture)
+			item.queue_free()
 
 func shoot(direction):
 	inventory_acc -= 1
