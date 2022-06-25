@@ -6,8 +6,8 @@ enum Direction {UP, DOWN, LEFT, RIGHT}
 
 export var speed = 600
 
-onready var direction: int =  Direction.UP
-
+onready var direction: int =  Direction.UP	
+	
 func _process(delta):
 	var degrees_per_second = 360.0
 	$Sprite.rotate(delta * deg2rad(degrees_per_second))
