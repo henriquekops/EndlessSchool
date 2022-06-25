@@ -23,7 +23,7 @@ onready var timer: Timer = $Timer
 onready var projectileSource = $ProjectileSource
 onready var Projectile = preload("res://scenes/Projectile.tscn")
 onready var screen_size: Vector2 = get_viewport_rect().size
-
+onready var hud = HudSingleton
 
 onready var animatedSprite: AnimatedSprite = $AnimatedSprite
 
@@ -48,6 +48,7 @@ func _ready() -> void:
 	currentScene = get_child(0)
 	random.randomize();
 	timer.connect("timeout", self, "_on_Timer_timeout")
+	hud.connect("activeItemShot", self, "_on_Hud_activeItemShot")
 	animatedSprite.speed_scale *= 1.5;
 	#defaultTexture = sprite.texture
 
@@ -163,6 +164,6 @@ func shoot(direction):
 	get_parent().add_child(p)
 	p.position = projectileSource.global_position
 	p.direction = direction
-	emit_signal("activeItemReleased")
+	emit_signal("activeItemReleased", p)
 	#if inventory_acc == 0:
 		#sprite.texture = defaultTexture

@@ -26,10 +26,10 @@ func _on_Player_activeItemConsumed(texture):
 	activeItemCount += 1
 	mutex.unlock()
 
-func _on_Player_activeItemReleased():
+func _on_Player_activeItemReleased(projectile):
 	mutex.lock()
 	activeItemCount -= 1
-	emit_signal("activeItemShot", activeItems[activeItemCount].texture.get_path())
+	projectile.get_node("Sprite").texture = load(activeItems[activeItemCount].texture.get_path())
 	activeItems[activeItemCount].texture = null
 	mutex.unlock()
 	
