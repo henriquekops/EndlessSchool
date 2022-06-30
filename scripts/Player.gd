@@ -48,6 +48,8 @@ var curSide = -1;
 
 export var shootrange = 1;
 
+var tipoItem = "";
+
 func _ready() -> void:
 	currentScene = get_child(0)
 	sceneLimit = currentScene.get_node("SceneLimit") 
@@ -94,8 +96,9 @@ func reset():
 		
 func _on_Timer_timeout():
 	#sprite.texture = defaultTexture
-	speed = speed / 2
-	animatedSprite.speed_scale /= 2;
+	if tipoItem == "VELOCITY":
+		speed = speed / 2
+		animatedSprite.speed_scale /= 2;
 	timer.stop()
 	passive_status = false
 	emit_signal("passiveItemReleased")
@@ -128,9 +131,11 @@ func apply_item_effect(item):
 	if item.TYPE == "passive" && !passive_status:
 		if item.effect == item.Effect.VELOCITY:
 			#sprite.texture = item.sprite.texture
+			tipoItem = "VELOCITY";
 			speed = speed * 2
 			animatedSprite.speed_scale *= 2;
 		elif item.effect == item.Effect.FOV:
+			tipoItem = "FOV";
 			shootrange = 2;
 		timer.start(5)
 		item.queue_free()
