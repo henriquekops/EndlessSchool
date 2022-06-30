@@ -14,18 +14,17 @@ export var speed: int = 400
 export var inventory_capacity: int = 3
 
 
-var sceneLimit : Position2D
-var player : KinematicBody2D
+
 var velocity: Vector2
 var collision: KinematicCollision2D
 var defaultTexture: Texture
 
 onready var timer: Timer = $Timer
-onready var sprite: Sprite = $Sprite
 onready var projectileSource = $ProjectileSource
 onready var Projectile = preload("res://scenes/Projectile.tscn")
 onready var screen_size: Vector2 = get_viewport_rect().size
 onready var rangeArea: Area2D = $Area2D
+onready var hud = HudSingleton
 
 onready var animatedSprite: AnimatedSprite = $AnimatedSprite
 	
@@ -52,10 +51,10 @@ var tipoItem = "";
 
 func _ready() -> void:
 	currentScene = get_child(0)
-	sceneLimit = currentScene.get_node("SceneLimit") 
-	player = currentScene.get_node("Player")
 	random.randomize();
 	timer.connect("timeout", self, "_on_Timer_timeout")
+	hud.connect("activeItemShot", self, "_on_Hud_activeItemShot")
+	animatedSprite.speed_scale *= 1.5;
 	#defaultTexture = sprite.texture
 
 func _input(event):
@@ -75,7 +74,11 @@ func _physics_process(delta: float) -> void:
 	position.y = clamp(position.y, 50+90, screen_size.y-50)
 	collision = move_and_collide(velocity)
 	if(velocity[0] == 0 && velocity[1] == 0):
-		animatedSprite.stop();
+		if(curSide == -1):
+			animatedSprite.play("stillLeft");
+		else:
+			animatedSprite.play("stillRight");
+		#animatedSprite.stop();
 		animatedSprite.frame = 0;
 	if collision != null:
 		if collision.collider.name == "Enemy":
@@ -137,16 +140,36 @@ func apply_item_effect(item):
 		elif item.effect == item.Effect.FOV:
 			tipoItem = "FOV";
 			shootrange = 2;
+			speed = speed * 2
+			animatedSprite.speed_scale *= 2;
+		# if item.effect == item.Effect.FOV:
+			# increase fov
+		emit_signal("passiveItemConsumed", item.sprite.texture)
 		timer.start(5)
 		item.queue_free()
 		passive_status = true
-		emit_signal("passiveItemConsumed")
 	elif item.TYPE == "active":
 		if inventory_acc < inventory_capacity:
-			#sprite.texture = item.sprite.texture
+			if(item.sprite.texture.get_path().split("/")[3] == "BookOpen.png"):
+				var rng = RandomNumberGenerator.new()
+				rng.randomize()
+				var r = rng.randi_range(0,2)
+				var i = Image.new()
+				match r:
+					0: 
+						item.sprite.texture = load("res://assets/BookGreen.png")
+						continue
+					1:
+						item.sprite.texture = load("res://assets/BookOrange.png")
+						continue
+					2:
+						item.sprite.texture = load("res://assets/BookPurple.png")
+						continue
+						
+				#item.sprite.texture.set_data()
 			inventory_acc += 1
+			emit_signal("activeItemConsumed", item.sprite.texture)
 			item.queue_free()
-			emit_signal("activeItemConsumed")
 
 func shoot(direction):
 	inventory_acc -= 1
@@ -154,6 +177,6 @@ func shoot(direction):
 	get_parent().add_child(p)
 	p.position = projectileSource.global_position
 	p.direction = direction
-	emit_signal("activeItemReleased")
+	emit_signal("activeItemReleased", p)
 	#if inventory_acc == 0:
 		#sprite.texture = defaultTexture
