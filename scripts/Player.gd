@@ -94,14 +94,21 @@ func reset():
 	passive_status = false
 	if(timer.time_left > 0):
 		timer.stop()
-		speed = speed / 2
-		animatedSprite.speed_scale /= 2;
+		speed = 400
+		animatedSprite.speed_scale = 1;
+		shootrange = 1
 		
 func _on_Timer_timeout():
 	#sprite.texture = defaultTexture
-	if tipoItem == "VELOCITY":
-		speed = speed / 2
-		animatedSprite.speed_scale /= 2;
+	match tipoItem:	
+		"VELOCITY": 
+			speed = speed / 2
+			animatedSprite.speed_scale /= 2;
+			continue
+		"FOV":
+			shootrange = 1
+			continue
+
 	timer.stop()
 	passive_status = false
 	emit_signal("passiveItemReleased")
@@ -137,14 +144,14 @@ func apply_item_effect(item):
 			tipoItem = "VELOCITY";
 			speed = speed * 2
 			animatedSprite.speed_scale *= 2;
+			emit_signal("passiveItemConsumed", load("res://assets/Shoes.png"))
 		elif item.effect == item.Effect.FOV:
 			tipoItem = "FOV";
 			shootrange = 2;
-			speed = speed * 2
-			animatedSprite.speed_scale *= 2;
+			emit_signal("passiveItemConsumed", load("res://assets/oculos.png"))
 		# if item.effect == item.Effect.FOV:
 			# increase fov
-		emit_signal("passiveItemConsumed", item.sprite.texture)
+		
 		timer.start(5)
 		item.queue_free()
 		passive_status = true
