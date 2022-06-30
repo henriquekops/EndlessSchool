@@ -28,7 +28,7 @@ onready var screen_size: Vector2 = get_viewport_rect().size
 onready var rangeArea: Area2D = $Area2D
 
 onready var animatedSprite: AnimatedSprite = $AnimatedSprite
-
+	
 var currentScene = null
 var inventory_acc = 0
 var passive_status = false
