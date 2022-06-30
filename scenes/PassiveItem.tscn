@@ -2,39 +2,39 @@
 
 [ext_resource path="res://assets/Shoes.png" type="Texture" id=1]
 [ext_resource path="res://scripts/PassiveItem.gd" type="Script" id=2]
-[ext_resource path="res://assets/Oculos_sheet.png" type="Texture" id=3]
+[ext_resource path="res://assets/GlassesSheet.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 25, 25 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=11]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 205, 205 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=12]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 205, 0, 205, 205 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=13]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 410, 0, 205, 205 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=14]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 615, 0, 205, 205 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=15]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 820, 0, 205, 205 )
 
 [sub_resource type="SpriteFrames" id=10]
 animations = [ {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0

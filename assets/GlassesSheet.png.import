@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Oculos_sheet.png-eed7dd4d91bedbc80a79e386c88d1a55.stex"
+path="res://.import/GlassesSheet.png-d8a3ecc334d1edf3be9b31a6e30ca22d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Oculos_sheet.png"
-dest_files=[ "res://.import/Oculos_sheet.png-eed7dd4d91bedbc80a79e386c88d1a55.stex" ]
+source_file="res://assets/GlassesSheet.png"
+dest_files=[ "res://.import/GlassesSheet.png-d8a3ecc334d1edf3be9b31a6e30ca22d.stex" ]
 
 [params]
 

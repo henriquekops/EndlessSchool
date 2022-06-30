@@ -148,7 +148,7 @@ func apply_item_effect(item):
 		elif item.effect == item.Effect.FOV:
 			tipoItem = "FOV";
 			shootrange = 2;
-			emit_signal("passiveItemConsumed", load("res://assets/oculos.png"))
+			emit_signal("passiveItemConsumed", load("res://assets/Glasses.png"))
 		# if item.effect == item.Effect.FOV:
 			# increase fov
 		

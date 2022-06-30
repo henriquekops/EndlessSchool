@@ -12,9 +12,9 @@ const TYPE = "passive";
 
 func _ready():
 	var spriteshoes = load("res://assets/Shoes.png");
-	var spriteglasses = load("res://assets/oculos.png");
+	var spriteglasses = load("res://assets/Glasses.png");
 	var ashoes = load("");
-	var aglasses = load("res://assets/Oculos_sheet.png");
+	var aglasses = load("res://assets/GlassesSheet.png");
 	var sprite: Sprite = $Sprite;
 	var animatedSprite: AnimatedSprite = $AnimatedSprite
 	if effect == Effect.VELOCITY:
