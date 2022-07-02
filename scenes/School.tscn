@@ -37,6 +37,7 @@ position = Vector2( 577, 292 )
 
 [node name="PassiveItem" parent="." instance=ExtResource( 5 )]
 position = Vector2( 96, 424 )
+effect = 2
 
 [node name="PassiveItem2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 29, 428 )
