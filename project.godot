@@ -66,6 +66,7 @@ Global="*res://scripts/Global.gd"
 PlayerSingleton="*res://scenes/Player.tscn"
 HudSingleton="*res://scenes/HUD.tscn"
 MusicController="*res://scenes/MusicController.tscn"
+ScoreSingleton="*res://scenes/Score.tscn"
 
 [display]
 

@@ -30,5 +30,6 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_Projectile_body_entered(body):
 	if body.is_in_group("enemy"):
+		ScoreSingleton.updateScore(500)
 		body.queue_free()
 		queue_free()

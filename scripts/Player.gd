@@ -90,6 +90,7 @@ func _physics_process(delta: float) -> void:
 func reset():
 	PlayerSingleton.visible = false
 	HudSingleton.get_child(0).hide()
+	ScoreSingleton.get_child(0).hide()
 	emit_signal("inventoryClear")
 	inventory_acc = 0
 	passive_status = false
@@ -98,6 +99,7 @@ func reset():
 		speed = 400
 		animatedSprite.speed_scale = 1;
 		shootrange = 1
+		
 		
 func _on_Timer_timeout():
 	#sprite.texture = defaultTexture

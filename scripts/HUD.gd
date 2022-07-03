@@ -21,6 +21,7 @@ func _ready():
 	player.connect("inventoryClear", self, "_on_Player_inventoryClear")
 
 func _on_Player_activeItemConsumed(texture):
+	ScoreSingleton.updateScore(50)
 	mutex.lock()
 	activeItems[activeItemCount].texture = texture
 	activeItemCount += 1
@@ -34,6 +35,7 @@ func _on_Player_activeItemReleased(projectile):
 	mutex.unlock()
 	
 func _on_Player_passiveItemConsumed(texture):
+	ScoreSingleton.updateScore(10)
 	mutex.lock()
 	passiveItems[passiveItemCount].texture = texture
 	passiveItemCount += 1
