@@ -1,12 +1,35 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/Door.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Floor2.png" type="Texture" id=2]
 [ext_resource path="res://scenes/levels/Level.gd" type="Script" id=3]
+
+[sub_resource type="TileSet" id=1]
+0/name = "Floor2.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 3, 78, 508, 172 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
 
 [node name="Level1" type="Node2D"]
 script = ExtResource( 3 )
 
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+format = 1
+tile_data = PoolIntArray( 65535, 0, 0, 0, 0, 0, 4, 0, 0, 7, 0, 0, 12, 0, 0, 19, 0, 0, 65537, 0, 0, 65553, 0, 0, 131072, 0, 0, 131080, 0, 0, 131084, 0, 0, 196615, 0, 0, 196620, 0, 0, 196627, 0, 0, 262144, 0, 0, 327686, 0, 0, 327693, 0, 0, 458751, 0, 0, 458758, 0, 0, 458765, 0, 0, 524288, 0, 0, 524292, 0, 0, 524295, 0, 0, 524301, 0, 0, 655360, 0, 0, 655365, 0, 0, 655372, 0, 0, 655379, 0, 0 )
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 margin_right = 1283.0
 margin_bottom = 719.0
 color = Color( 1, 0, 0, 1 )
