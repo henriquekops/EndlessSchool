@@ -32,6 +32,7 @@ var currentScene = null
 var inventory_acc = 0
 var passive_status = false
 var active = true
+var invincible = false
 
 #sala atual
 
@@ -81,7 +82,7 @@ func _physics_process(delta: float) -> void:
 		#animatedSprite.stop();
 		animatedSprite.frame = 0;
 	if collision != null:
-		if collision.collider.name == "Enemy":
+		if collision.collider.name == "Enemy" && invincible == false:
 			#call_deferred("free")
 			reset()
 			get_tree().change_scene("res://Scenes/GameOver.tscn")
@@ -107,6 +108,9 @@ func _on_Timer_timeout():
 			continue
 		"FOV":
 			shootrange = 1
+			continue
+		"STRENGTH":
+			invincible = false
 			continue
 
 	timer.stop()
@@ -149,6 +153,10 @@ func apply_item_effect(item):
 			tipoItem = "FOV";
 			shootrange = 2;
 			emit_signal("passiveItemConsumed", load("res://assets/Glasses.png"))
+		elif item.effect == item.Effect.STRENGTH:
+			tipoItem = "STRENGTH";
+			invincible = true
+			emit_signal("passiveItemConsumed", load("res://assets/Helmet.png"))
 		# if item.effect == item.Effect.FOV:
 			# increase fov
 		
