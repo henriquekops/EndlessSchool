@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/Floor2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/levels/Level.gd" type="Script" id=3]
+[ext_resource path="res://scenes/ActiveItem.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=5]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Floor2.png 0"
@@ -38,3 +40,18 @@ tile_data = PoolIntArray( 65532, 0, 0, 1, 0, 0, 8, 0, 0, 9, 0, 0, 16, 0, 0, 6553
 position = Vector2( 630, 720 )
 rotation = -1.57079
 target_scene = "res://scenes/levels/Level1.tscn"
+
+[node name="ActiveItem2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 235, 648 )
+
+[node name="ActiveItem3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1020, 357 )
+
+[node name="ActiveItem4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 207, 163 )
+
+[node name="Enemy" parent="." instance=ExtResource( 5 )]
+position = Vector2( 768, 247 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 249, 376 )

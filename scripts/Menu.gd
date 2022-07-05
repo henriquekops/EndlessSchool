@@ -11,6 +11,7 @@ func _on_Button_pressed() -> void:
 	PlayerSingleton.visible = true
 	ScoreSingleton.get_child(0).show()
 	HudSingleton.get_child(0).show()
+	MusicController.play_music()
 	get_tree().change_scene("res://scenes/School.tscn")
 
 

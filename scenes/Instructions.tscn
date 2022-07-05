@@ -79,7 +79,8 @@ margin_right = 1099.0
 margin_bottom = 160.0
 custom_fonts/font = SubResource( 1 )
 text = "This is a book, it can be used to knock 
-adults out and give you an advantage!"
+adults out and give you an advantage!
+Use the arrow keys to shoot."
 
 [node name="Label2" type="Label" parent="."]
 margin_left = 376.0
@@ -130,7 +131,7 @@ text = "BACK"
 position = Vector2( 161, 477 )
 scale = Vector2( 0.792683, 0.792683 )
 frames = SubResource( 9 )
-frame = 4
+frame = 1
 playing = true
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
