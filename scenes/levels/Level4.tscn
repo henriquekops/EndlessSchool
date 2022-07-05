@@ -46,6 +46,7 @@ rotation = 1.57079
 target_scene = "res://scenes/levels/Level1.tscn"
 
 [node name="Student" parent="." instance=ExtResource( 3 )]
+visible = false
 position = Vector2( 62, 168 )
 
 [node name="AnimatedSprite" parent="Student" index="1"]
@@ -91,7 +92,7 @@ position = Vector2( 985, 505 )
 
 [node name="Student2" parent="." instance=ExtResource( 3 )]
 visible = false
-position = Vector2( 1082, 609 )
+position = Vector2( 1184, 108 )
 
 [node name="AnimatedSprite" parent="Student2" index="1"]
 animation = "left"
